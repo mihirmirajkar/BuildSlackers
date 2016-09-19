@@ -1,6 +1,6 @@
 ### Problem Statement
 
-The cost of fixing issues has been shown to be proportional to how quickly the issue is discovered. Issues that are discovered late in the software development lifecycle cost higher to fix than issues that are discovered earlier. Continuous integration attempts to discover issues as early as possible, by constantly building the software and running any automated tests. However, continuous integration can be a complicated process, and requires human effort to check on the state of the build, and respond to any issues discovered. If a checkin does break the build, it can require a lot of effort to determine why the build broke. 
+The cost of fixing issues has been shown to be proportional to how quickly the issue is discovered. Issues that are discovered late in the software development lifecycle have a higher time cost to fix than issues that are discovered earlier. Continuous integration attempts to discover issues as early as possible, by constantly building the software and running any automated tests. However, continuous integration can be a complicated process, and requires human effort to check on the state of the build and respond to any issues discovered. If a programmer makes a mistake and opens a pull request that does break the build, it can require a lot of needless effort to determine why the build broke, and the longer we go without fixing the issue the harder it will be to locate the problem later.
 
 
 ### Bot Description
