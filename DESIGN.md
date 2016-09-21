@@ -15,6 +15,9 @@ A bot is a good solution for this problem because it can reduce the complexity o
 ###### Wireframe
 ![Wireframe](Wireframe.png)
 
+##### Storyboard
+![Storyboard](Storyboard.png)
+
 ### Architecture Design
 
 ![Architectural Picture](ArchitectureForSoftwareEngineering.png)
