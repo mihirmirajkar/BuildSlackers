@@ -12,6 +12,8 @@ A bot is a good solution for this problem because it can reduce the complexity o
 
 ### Architecture Design
 
+![Architectural Picture](ArchitectureForSoftwareEngineering.png)
+
 BuildSlackers will communicate with 3 different outside components, and so there is a component within BuildSlackers for each method of communication. SlackChat will be responsible for directly interfacing with the user through Slack. It will give the user feedback on the status of builds, as well as provide the user with the ability to start a build, merge branches on GitHub, and create an issue on GitHub for a failed build. SlackChat will not actually perform any of these actions; it will just provide the user a way to tell the bot to perform these actions. SlackChat will use IssueBuilder in order to build up an issue for GitHub.
 
 IssueBuilder is responsible for making an issue on GitHub, and using SlackChat to gather the required data so that a new issue can be created. IssueBuilder will slowly build up the representation of an issue internally. Once it has all of the required information, it will use GitHubTracker to create the new issue.
