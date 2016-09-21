@@ -9,3 +9,8 @@ Our bot, BuildSlackers, simplifies the continuous integration process to help de
 
 A bot is a good solution for this problem because it can reduce the complexity of configuring a build for developers. BuildSlackers will hide much of the complexity of configuring a continuous integration environment from developers. BuildSlackers will automatically alert the developers if a build breaks, so developers do not need to monitor the status of a build, but can spend their time doing other things. BuildSlackers also allows information about the builds to be seamlessly integrated into their conversations on slack, so the developers can quickly find the status of a build without needing to be at the server that performs the continuous integration. 
   
+
+### Architecture Design
+
+##### Additional Patterns
+
