@@ -29,4 +29,4 @@ Constraints:
 - The user can only trigger a build through Slack with a direct mention of the bot and the word "build".
 
 ##### Additional Patterns
-
+Our bot will be very event driven, with actions being taken either as users use slack, pull requests are made on GitHub, or a build finishes. 
