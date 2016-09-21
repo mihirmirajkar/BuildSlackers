@@ -12,5 +12,15 @@ A bot is a good solution for this problem because it can reduce the complexity o
 
 ### Architecture Design
 
+[text here]
+
+Constraints:
+- The user only communicates through Slack.
+- The bot will only build projects containing exclusively Java code.
+- The bot will not generate any kind of unit tests, but only run given tests.
+- The bot will require properly formatted user input which it will communicate to the user through Slack.
+- The bot will only support a single server and a single project at any given time.
+- The user can only trigger a build through Slack with a direct mention of the bot and the word "build".
+
 ##### Additional Patterns
 
