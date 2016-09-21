@@ -12,7 +12,13 @@ A bot is a good solution for this problem because it can reduce the complexity o
 
 ### Architecture Design
 
-[text here]
+BuildSlackers will communicate with 3 different outside components, and so there is a component within BuildSlackers for each method of communication. SlackChat will responsible for directly interfacing with the user through Slack. It will give the user feedback on the status of builds, as well as provide the user with the ability to start a build, merge branches on GitHub, and create an issue on GitHub for a failed build. SlackChat will not actually perform any of these actions; it will just provide the user a way to tell the bot to perform these actions. SlackChat will use IssueBuilder in order to build up an issue for GitHub.
+
+IssueBuilder is responsible for mocking an issue on GitHub, and using SlackChat to gather the required data so that a new issue can be created. IssueBuilder will slowly build up the representation of an issue internally. Once it has all of the required information, it will use GitHubTracker to create the new issue.
+
+GitHubTracker is responsible for watching the state of the project on GitHub, and merging branches and creating issues as necessary. Whenever a new pull request is created, it will notify SlackChat and BuildComm. GitHubTracker is responsible for using the GitHub REST API to interface with GitHub. 
+
+BuildComm is responsible for communicating with the build server to kick off a build for the project. 
 
 Constraints:
 - The user only communicates through Slack.
