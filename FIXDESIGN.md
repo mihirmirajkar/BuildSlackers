@@ -19,7 +19,7 @@ BuildSlackers fits most nicely into the DevOps bot category. A bot is a good sol
 ![Storyboard](FixDesign_Storyboard.png)
 
 ### Architecture Design
-
+![Architectural Design](FixDesign_Architecture.png)
 
 Constraints:
 - The bot will only fix dependency incompatibility upgrade issues in Java code. If a project has non-Java files that need upgrading, BuildSlackers will not handle that.
