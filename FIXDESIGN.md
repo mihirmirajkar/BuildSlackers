@@ -6,17 +6,17 @@ Incompatibility issues can often arise from updating versions of different depen
 
 ### Bot Description
 
-BuildSlackers will simplify the process of updating the dependencies of a project through automation. When a user decides that they would like to update a project's dependencies, they will contact the bot through Slack, telling it "Update dependencies" as well as the name of the project (GitHub repo name) they want updated. BuildSlackers clones the repository, and then uses Maven to identify all of the package dependencies. It then uses some kind of package manager (To be determined) to compile a list of all dependencies which have newer versions available than those currently in the project. 
+BuildSlackers will simplify the process of updating the dependencies of a project through automation. BuildSlackers will operate on a timer. Everytime that timer reaches 0 (be it once a week, a day, etc...) BuildSlackers will clone a Github project. It will then use Maven to find all the dependencies that can be updated. For each dependency that can be updated, it will create a separate copy of the project and update one dependency per copy. After updating a dependency, BuildSlackers will compile the project and run any unit tests, redirecting the build result into log files. All errors and warnings are extracted and placed into separate log files so they may be easily located. Unit tests results will also be saved to a log file. If the build succeeds and all the unit tests pass, BuildSlackers will use Slack to ask a user if they want to update the dependency. If the user says 'yes', BuildSlackers will push the updated version of the project to Github. 
 
-Once it has determined the software packages that could be updated, BuildSlackers creates testing folders for each individual version update. It then performs each respective update, and builds the project within the testing folder, redirecting the build result into log files. All errors and warnings are extracted and placed into separate log files so they may be easily located. Additionally, BuildSlackers runs any unit tests within a project's test folder, saving those results into a separate log file. Once all of the builds and tests have completed, BuildSlackers combines the warnings/errors results with the testing results into a single result file which it then uploads to Slack (or GitHub). This process of testing each newer released version is repeated for every single dependent package referenced by the software project. Once all dependencies have been checked, users are notified that the dependency update checking is complete through Slack.
+BuildSlackers fits most nicely into the DevOps bot category. A bot is a good solution for this project, because checking for dependency updates with maven is a task that can easily be automated, freeing up developers to work on more complex issues. A bot will reduce the time developers need to spend figuring out if they need to update their dependencies, because they will be notified whenever a dependency can be updated. Having a bot check for dependency updates continuously also means that your project is more likely to stay as up to date as possible. This way, developers will only need to spend time updating a project's dependency version, when the new version of a dependency is incompatible with the current state of the project. 
   
 ##### Design Documents
 
 ###### Wireframe
-
+![Wireframe](FixDesign_Wireframe.png)
 
 ##### Storyboard
-
+![Storyboard](FixDesign_Storyboard.png)
 
 ### Architecture Design
 
