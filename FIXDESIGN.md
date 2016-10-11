@@ -21,6 +21,16 @@ BuildSlackers fits most nicely into the DevOps bot category. A bot is a good sol
 ### Architecture Design
 ![Architectural Design](FixDesign_Architecture.png)
 
+Our Architecture is made of of 4 main components, 3 of them for interacting with outside services, and one central module for overseeing everything, passing data between the other components, and making decisions about what needs to happen next. 
+
+The first module, Git Adapter, is responsible for interfacing with Git, and providing the central Decision Maker with an easy to use API, so the decision maker doesn't need to know about Github's REST API. The Git Adapter is responsible for cloning projects from Github, and pushing projects with updated dependencies back up to Github. It will follow the adapter pattern, allowing the Decision Maker to act as if it was talking to Github. 
+
+The second module, Slack Adapter, is responsible for interfacing with Slack. It will notify the Slack users of any dependencies that can be updated, and tell the Decision Maker whether to update the dependency or not. This is the conversational module of our bot, and will need to be embedded into Slack so it can interact with users. 
+
+The third module, Maven Overseer, is responsible for using Maven to identify dependencies that can be updated, and updating those dependencies, building the updated version of the project, and running any user tests. This will be an observable, alerting the Decision Maker whenever a dependency can be updated, so the Decision Maker can notify the users through the Slack Adapter, and start making preparations to push that code up to Github. 
+
+The main component is the Decision Maker. The Decision Maker binds the other three components together, so that those components do not need to interact with each other, or even know that the other components exist. It is responsible for telling the Git Adapter which project on Github to clone and push to. It also will tell the Slack Adapter when users need to be asked questions, or updated with information, and the Decision Maker will tell the Maven Overseer when to run. The Decision Maker is also responsible for keeping track of the output from the Maven Overseer (output from Maven builds will be stored in log files), so that it can parse the log files and determine what the appropriate next steps are. 
+
 Constraints:
 - The bot will only fix dependency incompatibility upgrade issues in Java code. If a project has non-Java files that need upgrading, BuildSlackers will not handle that.
 - Requires Maven to be installed on the machine the bot is running on.
