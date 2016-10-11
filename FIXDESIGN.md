@@ -29,7 +29,8 @@ Constraints:
 - BuildSlackers will only check the dependencies for 1 project at a time. If you want to change which project BuildSlackers checks, you will need to tell it to switch projects.
 
 ##### Additional Patterns
-
+1. Adapter pattern - The adapter pattern allows classes to work together that couldn't otherwise because of incompatible interfaces. For our architecture, our Git Adapter will conform to the adapter pattern, allowing our Decision Making module to interface with Github without knowing about Github's REST API. The Git Adapter will present to the Decision Making module an API that the Decision Maker expects and with which it can interact.
+2. Observer pattern - The observer pattern allows one object to notify other objects when it changes state. In our architecture, the Maven Overseer will be an observable, and the Decision Maker and Slack Adapter will be observers. This will allow the Maven Overseer to notify those modules when a project has dependencies that can be updated, allowing the Decision Maker to respond with the appropriate action, and allowing the Slack Adapter to notify users through Slack.
 
 ##### Notes
 Our bot was inspired by ApiMonkey, built by Tanvi Mainkar. ApiMonkey is a dependency tool for C# code which does essentially the same thing as BuildSlackers, only in a different language. It can be found at: https://github.com/alt-code/ApiMonkey
