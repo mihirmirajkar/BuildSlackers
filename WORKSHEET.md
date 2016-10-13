@@ -4,5 +4,19 @@ Due to a team member being out of town over the first weekend, and then Fall Bre
 
 | Deliverable   | Item/Status   |  Issues/Tasks
 | ------------- | ------------  |  ------------
-| REDESIGN.md      | In progress          | #1
-| Design Use Cases | In progress | #2
+| REDESIGN.md      | In progress - completed 10/13          | #1
+| Design Use Cases | In progress - completed 10/12 | #2
+
+
+Due to the aforementioned issues, we are also slightly behind on iteration 2, with us pushing iteration 2's hard complete date out to this Saturday. 
+##### Week 2
+
+| Deliverable   | Item/Status   |  Issues/Tasks
+| ------------- | ------------  |  ------------
+| Use Case      | 2. List newer dependencies          | 
+| Subflow | 1 | #10, #11
+| Subflow | 2 | ##15, #14, #13
+| Mock Data | Use Case 2 | #17
+| Use Case | 3. Change current project | In progress
+
+As of this time, the subflows for Use Case 3, changing the current project, have not been filled in.
