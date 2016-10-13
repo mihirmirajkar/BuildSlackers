@@ -15,7 +15,7 @@ Due to the aforementioned issues, we are also slightly behind on iteration 2, wi
 | ------------- | ------------  |  ------------
 | Use Case      | 2. List newer dependencies          | 
 | Subflow | 1 | #10, #11
-| Subflow | 2 | ##15, #14, #13
+| Subflow | 2 | #15, #14, #13
 | Mock Data | Use Case 2 | #17
 | Use Case | 3. Change current project | In progress
 
