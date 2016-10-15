@@ -20,6 +20,10 @@ var myBot = controller.spawn({
   }
 }).startRTM()
 
+controller.setupWebserver(3000, function(err, webserver) {
+  controller.createWebhookEndpoints(webserver);
+});
+
 // give the bot something to listen for.
 //controller.hears('string or regex',['direct_message','direct_mention','mention'],function(bot,message) {
 // Listener for change project trigger
@@ -54,6 +58,8 @@ controller.hears('list dependencies', ['direct_message', 'mention', 'direct_ment
 
 //Outgoing webhook token: Ls6YiyqOybS3RyPjQR4lCGJX
 // Use token to verify request came from our slack team
+
+// /change command token: CL7QzsCATFeKMoiJcoeoRWkk
 
 //NOTE: OUR APPLICATION WILL NEED TO BE HOSTED AT A PUBLIC IP ADDRESS OR DOMAIN NAME FOR WEBHOOKS TO WORK
 //NOTE: MAY NEED MULTIPLE OUTGOING WEBHOOKS
