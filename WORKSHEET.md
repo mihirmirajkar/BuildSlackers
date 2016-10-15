@@ -19,6 +19,8 @@ Due to the aforementioned issues, we are also slightly behind on iteration 2, wi
 | Mock Data | Use Case 2 | #17
 | Selenium Testing Use Case 2| To do | #16
 | Use Case | 3. Change current project | In progress
+| Subflow | To Do | #19, #20
+| Subflow | To Do | #21
 | Selenium Testing Use Case 3 | To do | 
 
 As of this time, the subflows for Use Case 3, changing the current project, have not been filled in.
