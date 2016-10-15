@@ -6,7 +6,7 @@ var parse = require('parse-link-header');
 
 ////// FILL IN THE BLANKS
 
-var token = "token " + "9688b68947b58943816d7982cae43db64d7556b0";
+var token = "token " + "";
 var userId = "BS-Mock";
 var repoName = "createIssues";
 
