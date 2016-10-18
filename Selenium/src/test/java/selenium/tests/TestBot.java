@@ -65,13 +65,13 @@ private static WebDriver driver;
 
 		// Type something
 		WebElement messageBot = driver.findElement(By.id("message-input"));
-		messageBot.sendKeys("@buildslackersbot change project");
+		messageBot.sendKeys("hello");
 		messageBot.sendKeys(Keys.RETURN);
 
 		wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 
 		WebElement msg = driver.findElement(
-				By.xpath("//span[@class='message_body' and text() = 'Got it. Switching project.'"));
+				By.xpath("//span[@class='message_body' and text() = 'hello there']"));
 		assertNotNull(msg);
 		
 	}
