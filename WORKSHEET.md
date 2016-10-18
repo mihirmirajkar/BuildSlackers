@@ -24,6 +24,6 @@ Due to the aforementioned issues, we are also slightly behind on iteration 2, wi
 | Selenium Testing Use Case 3 | To do | 
 | Submit the Fixdesign to TA| Done| #1
 | Use Case 3 |Done |#20 #21 #22
-
+| Selenium Test | Use Case 3 Done|
 
 As of this time, the subflows for Use Case 3, changing the current project, have not been filled in.
