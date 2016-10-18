@@ -111,10 +111,10 @@ function getListProject(myCommand)
 }
 
 //Listener for list dependencies trigger
-controller.hears('list dependencies', ['direct_message', 'mention', 'direct_mention'], function(bot,message){
+//controller.hears('list dependencies', ['direct_message', 'mention', 'direct_mention'], function(bot,message){
   //Call function to get the dependency list
   //May need outgoing webhook here
-});
+//});
 
 //NOTE: Incoming webhook code does not go here
 //Need incoming webhook for getting 'list dependencies' list
@@ -131,6 +131,42 @@ controller.hears('list dependencies', ['direct_message', 'mention', 'direct_ment
 
 //NOTE: OUR APPLICATION WILL NEED TO BE HOSTED AT A PUBLIC IP ADDRESS OR DOMAIN NAME FOR WEBHOOKS TO WORK
 //NOTE: MAY NEED MULTIPLE OUTGOING WEBHOOKS
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+controller.hears('list dependencies',['direct_message', 'mention', 'direct_mention'], function(bot,message)
+{
+  bot.startConversation(message, listDependency);
+});
+
+listDependency = function(response, convo){
+	console.log("Checking for dependencies.... :-D ");
+	// Making call to the REST Service
+	var reply = "";
+	var command = "ld";
+	var options = getOption(command);
+	//command = "ls";
+	// Send a http request to url and specify a callback that will be called upon its return.
+	request(options, function (error, response, body) 
+	{
+		//console.log(body);
+		var obj = JSON.parse(response.body);
+		
+		console.log( obj.responseMessage );
+		convo.say(obj.responseMessage);
+		
+	});
+}
+function getOption(command){
+	var updatedOptions = {
+		url: urlRoot + command,
+		method: 'GET',
+		headers: {
+			"User-Agent": "EnableIssues",
+			"content-type": "application/json"
+		}
+	};
+	return updatedOptions;
+}
+
 
 
 
