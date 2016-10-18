@@ -1,6 +1,6 @@
 package selenium.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -10,7 +10,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 
-public class TestBot {
+public class ChangeSuccess {
 private static WebDriver driver;
 	
 	@BeforeClass
@@ -66,14 +65,31 @@ private static WebDriver driver;
 
 		// Type something
 		WebElement messageBot = driver.findElement(By.id("message-input"));
-		messageBot.sendKeys("@BuildSlackerBot change project");
+		messageBot.sendKeys("@buildslackersbot change project");
 		messageBot.sendKeys(Keys.RETURN);
 
-		wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
+		//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
+		try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body' and text() = 'hello there']"));
-		System.out.println(msg.size());
-		
+		messageBot.sendKeys("Newfolder");
+		messageBot.sendKeys(Keys.RETURN);
+
+		try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
+		List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body']"));
+		int i= msg.size();
+		System.out.println(msg.get(i-1).getText());
+		assertEquals("Success", msg.get(i-1).getText());
 		
 	}
 }
