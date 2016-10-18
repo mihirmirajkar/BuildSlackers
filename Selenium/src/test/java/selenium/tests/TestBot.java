@@ -71,7 +71,7 @@ private static WebDriver driver;
 		wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 
 		WebElement msg = driver.findElement(
-				By.xpath("//span[@class='bot_label']"));
+				By.xpath("//span[@class='message_body' and text() = 'Got it. Switching project.'"));
 		assertNotNull(msg);
 		
 	}
