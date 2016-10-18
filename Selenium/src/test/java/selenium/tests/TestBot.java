@@ -2,6 +2,7 @@ package selenium.tests;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.AfterClass;
@@ -70,9 +71,8 @@ private static WebDriver driver;
 
 		wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 
-		WebElement msg = driver.findElement(
-				By.xpath("//span[@class='message_body' and text() = 'hello there']"));
-		assertNotNull(msg);
+		List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body' and text() = 'hello there']"));
+		System.out.println(msg.size());
 		
 		
 	}
