@@ -1,8 +1,13 @@
-
 var Botkit = require('botkit');
 var express = require('express');
 var app = express();
 
+var request = require('request');
+var fs = require("fs");
+var Promise = require('bluebird');
+var parse = require('parse-link-header');
+
+var urlRoot = "http://localhost:8080/SpringMVC/decisioncontroller/executecommand/";
 //var childProcess = require("child_process");
 
 var controller = Botkit.slackbot({
@@ -33,20 +38,78 @@ controller.hears('change project',['direct_message', 'mention', 'direct_mention'
 });
 
 getNewProjectName = function(response, convo){
-  convo.ask("What is the name of the project you would like to switch to?", function(response, convo) {
-    convo.say("Got it. Switching project.");
-    //call function to switch the project, response should contain project name
-    //outgoing webhook?
-    //To post response to outgoing webhook respond with "text": "my response"
-    convo.next(); //Terminate conversation with status == 'completed'
-  });
+	// Making call to the REST Service
+	var reply = "";
+	var command = "ls";
+	var options = getOption(command);
+	//command = "ls";
+	// Send a http request to url and specify a callback that will be called upon its return.
+	request(options, function (error, response, body) 
+	{
+		//console.log(body);
+		var obj = JSON.parse(response.body);
+		
+		convo.say(obj.responseMessage);
+		convo.ask("What is the name of the project you would like to switch to?", function(response, convo) {
+			command = "cp_" + response.text;
+			options = getOption(command);
+            
+			request(options, function (error, response, body) 
+			{
+				var obj = JSON.parse(response.body);
+				convo.say(obj.responseMessage);
+			});
+			
+		//convo.say("Got it. Switching project.");
+		//call function to switch the project, response should contain project name
+		//outgoing webhook?
+		//To post response to outgoing webhook respond with "text": "my response"
+		convo.next(); //Terminate conversation with status == 'completed'
+	  });
+	});
+}
+function getOption(command){
+	var updatedOptions = {
+		url: urlRoot + command,
+		method: 'GET',
+		headers: {
+			"User-Agent": "EnableIssues",
+			"content-type": "application/json"
+		}
+	};
+	return updatedOptions;
+}
+function getListProject(myCommand)
+{
+
+	var reply = "";
+	var options = {
+		url: urlRoot + "ls",
+		method: 'GET',
+		headers: {
+			"User-Agent": "EnableIssues",
+			"content-type": "application/json"
+		}
+	};
+
+	// Send a http request to url and specify a callback that will be called upon its return.
+	request(options, function (error, response, body) 
+	{
+		//console.log(body);
+		var obj = JSON.parse(response.body);
+		console.log( obj.responseMessage );
+		reply = obj.responseMessage;
+	});
+	
+	return reply;
+
 }
 
 //Listener for list dependencies trigger
-controller.hears('list dependencies', ['direct_message', 'mention', 'direct_mention'], function(bot,message){
+//controller.hears('list dependencies', ['direct_message', 'mention', 'direct_mention'], function(bot,message){
   //Call function to get the dependency list
   //May need outgoing webhook here
-});
+//});
 
 //NOTE: Incoming webhook code does not go here
 //Need incoming webhook for getting 'list dependencies' list
@@ -63,10 +126,78 @@ controller.hears('list dependencies', ['direct_message', 'mention', 'direct_ment
 
 //NOTE: OUR APPLICATION WILL NEED TO BE HOSTED AT A PUBLIC IP ADDRESS OR DOMAIN NAME FOR WEBHOOKS TO WORK
 //NOTE: MAY NEED MULTIPLE OUTGOING WEBHOOKS
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+controller.hears('list dependencies',['direct_message', 'mention', 'direct_mention'], function(bot,message)
+{
+  bot.startConversation(message, listDependency);
+});
+
+listDependency = function(response, convo){
+	console.log("Checking for dependencies.... :-D ");
+    convo.say("The following are the dependencies for the current project.");
+    convo.say("They are displayed as follows: ");
+    convo.say("dependencyGroup:artifactID:currentVersion:newerVersions");
+	// Making call to the REST Service
+	var reply = "";
+	var command = "ld";
+	var options = getOption(command);
+	//command = "ls";
+	// Send a http request to url and specify a callback that will be called upon its return.
+	request(options, function (error, response, body) 
+	{
+		//console.log(body);
+		var obj = JSON.parse(response.body);
+		
+		console.log( obj.responseMessage );
+		convo.say(obj.responseMessage);
+		
+	});
+}
 
 
 
-
+controller.hears('Check for updates',['direct_message', 'mention', 'direct_mention'], function (bot, message)
+{
+    bot.startConversation(message, updateDependency);
+});
+updateDependency = function(response, convo){
+	console.log("Updating....");
+	// Making call to the REST Service
+	var reply = "";
+	var command = "up";
+	var options = getOption(command);
+	//command = "ls";
+	// Send a http request to url and specify a callback that will be called upon its return.
+	request(options, function (error, response, body) 
+	{
+		//console.log(body);
+		var obj = JSON.parse(response.body);
+		
+		console.log( obj.responseMessage );
+		convo.say(obj.responseMessage);
+        //insert check here for if updates available or not
+		convo.ask("Which dependency would you like to update? " + 
+                        "Please enter the number of the dependency.", function(response, convo) {
+			command = "up_"+response.text;
+			options = getOption(command);
+			request(options, function (error, response, body) 
+			{
+				var obj = JSON.parse(response.body);
+				convo.say(obj.responseMessage);
+                convo.next();
+			});
+			
+		//convo.say("Got it. Switching project.");
+		//call function to switch the project, response should contain project name
+		//outgoing webhook?
+		//To post response to outgoing webhook respond with "text": "my response"
+		//convo.next(); //Terminate conversation with status == 'completed'
+	  });
+	});
+}
+//$$$$$$$$$$$$$$$$$$$$$$
+//setInterval(invokeUpdate, 100000);		//change the timer here
+//invokeUpdate();
 
 
 
