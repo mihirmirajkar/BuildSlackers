@@ -1,10 +1,12 @@
 ###Activities suggested by Professor
-Ater we submitted the original design, we had a meeting with the professor in which he suggested us to move to a completely different project. Suggesions given by the professor were:
+Ater we submitted the original design, we had a meeting with the professor in which he suggested we move to a completely different project. Suggestions given by the professor were:
 * Change project idea and come up with something like API Monkey which does dependency checks for C#, but do it for another language.
-* Make something that doesnt already exists.
+* Make something that doesnt already exist.
 * Improve the workflow which seemed unrealistic and did not have much improvment over Jenkins/Travis CI
 * Change the wireframe to what the user interaction platform will look like after the bot is deployed instead of the configuration screen of the bot.
 * Add additional patterns: Identify design patters which will be used in the architecture of the bot
+
+Below is our new project DESIGN.md. We have changed our project, and written up a new DESIGN.md. We added in some additional patterns, changed what we were showing in our wireframe, and implemented our version of API Monkey.
   
   
 
