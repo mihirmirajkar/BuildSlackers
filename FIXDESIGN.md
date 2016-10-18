@@ -1,5 +1,5 @@
 ###Activities suggested by Professor
-Ater we submitted the original design, we had a meeting with the professor in which he suggested us to move to a completely different project. Sugeesions given by the professor were:
+Ater we submitted the original design, we had a meeting with the professor in which he suggested us to move to a completely different project. Suggesions given by the professor were:
 * Change project idea and come up with something like API Monkey which does dependency checks for C#, but do it for another language.
 * Make something that doesnt already exists.
 * Improve the workflow which seemed unrealistic and did not have much improvment over Jenkins/Travis CI
