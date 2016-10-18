@@ -72,7 +72,7 @@ private static WebDriver driver;
 
 		WebElement msg = driver.findElement(
 				By.xpath("//span[@class='message_body' and text() = 'hello there']"));
-		assertNotNull(msg);
+		assertNotNull(msg);dcdcdcd
 		
 	}
 }
