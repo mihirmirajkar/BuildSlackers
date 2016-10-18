@@ -92,7 +92,7 @@ public class ChangeFail {
 			int i= msg.size();
 			System.out.println(msg.get(i-1).getText());
 			assertEquals("failed", msg.get(i-1).getText());
-			
+			xZ
 		}
 	}
 
