@@ -25,13 +25,13 @@ BuildSlackers fits most nicely into the DevOps bot category. A bot is a good sol
 ##### Design Documents
 
 ###### Wireframe
-![Wireframe](FixDesign_Wireframe.png)
+![Wireframe](Images/FixDesign_Wireframe.png)
 
 ##### Storyboard
-![Storyboard](FixDesign_Storyboard.png)
+![Storyboard](Images/FixDesign_Storyboard.png)
 
 ### Architecture Design
-![Architectural Design](FixDesign_Architecture.png)
+![Architectural Design](Images/FixDesign_Architecture.png)
 
 Our Architecture is made up of 4 main components, 3 of them for interacting with outside services, and one central module for overseeing everything, passing data between the other components, and making decisions about what needs to happen next. 
 
