@@ -1,3 +1,13 @@
+###Activities suggested by Professor
+Ater we submitted the original design, we had a meeting with the professor in which he suggested us to move to a completely different project. Sugeesions given by the professor were:
+1. Change project idea and come up with something like API Monkey which does dependency checks for C#, but do it for another language.
+2. Make something that doesnt already exists.
+3. Improve the workflow which seemed unrealistic and did not have much improvment over Jenkins/Travis CI
+4. Change the wireframe to what the user interaction platform will look like after the bot is deployed instead of the configuration screen of the bot.
+5. Add additional patterns: Identify design patters which will be used in the architecture of the bot
+  
+  
+
 ### Problem Statement
 
 A basic fundamental need of software systems which evolve over time is the idea of "designing for failure". The gold standard for software availability is the "5 9's", meaning that the system will be up 99.999% of the time. Most big projects will have dependencies on third-party software. Those third-party software pieces will be updated over time, providing gains in performance, security, or reliability, among other things. To ensure your software is as up to date as possible, you will occasionally need to update your software so that it is using the latest version of any software it is dependent on. 
