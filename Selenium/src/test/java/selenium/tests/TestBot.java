@@ -65,7 +65,7 @@ private static WebDriver driver;
 
 		// Type something
 		WebElement messageBot = driver.findElement(By.id("message-input"));
-		messageBot.sendKeys("hello");
+		messageBot.sendKeys("@BuildSlackerBot change project");
 		messageBot.sendKeys(Keys.RETURN);
 
 		wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
