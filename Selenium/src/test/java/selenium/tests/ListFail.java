@@ -1,6 +1,6 @@
 package selenium.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -18,9 +18,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 
-public class ChangeFail {
+public class ListFail {
 
-	
+
 	private static WebDriver driver;
 		
 		@BeforeClass
@@ -67,7 +67,7 @@ public class ChangeFail {
 
 			// Type something
 			WebElement messageBot = driver.findElement(By.id("message-input"));
-			messageBot.sendKeys("@buildslackersbot change project");
+			messageBot.sendKeys("@buildslackersbot list dependencies");
 			messageBot.sendKeys(Keys.RETURN);
 
 			//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
@@ -78,7 +78,7 @@ public class ChangeFail {
 				e.printStackTrace();
 			}
 
-			messageBot.sendKeys("abcd");
+			/*messageBot.sendKeys("abcd");
 			messageBot.sendKeys(Keys.RETURN);
 
 			try {
@@ -86,15 +86,14 @@ public class ChangeFail {
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 			List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body']"));
 			int i= msg.size();
 			System.out.println(msg.get(i-1).getText());
-			assertEquals("failed", msg.get(i-1).getText());
+			assertNotNull(msg.get(i-1));
 			
 		}
-	}
+	
 
-
-
+}
