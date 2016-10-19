@@ -17,7 +17,8 @@ import edu.ncsu.mavenbot.model.*;
 @RequestMapping("/decisioncontroller")
 public class DecisionMakingController {
 	
-	MavenOverseer mvn = new MavenOverseer();
+	//MavenOverseer mvn = new MavenOverseer();
+	String project = "";
 	
 	@ResponseBody
 	@RequestMapping(value="/executecommand/{command}", method = RequestMethod.GET)
@@ -31,20 +32,24 @@ public class DecisionMakingController {
 		if (command.contains("cp_")) {
 			//get the project name
 			String projectName = command.split("_")[1];
-			
+			project = projectName;
 			GitAdapter adapter = new GitAdapter();
 			return "{\"responseMessage\":\"" + adapter.changeRepo(projectName) + "\"}";
 		}
 		
 		if (command.equals("ld")) {
+			MavenOverseer mvn = new MavenOverseer();
+			mvn.projectName = project;
 			return "{\"responseMessage\":" + mvn.ListUpdateableDependencies() + "}";
 		}
 		
 		if (command.equals("up")) {
+			MavenOverseer mvn = new MavenOverseer();
 			return "{\"responseMessage\":" + mvn.FindLatestGoodVersions() + "}";
 		}
 		if (command.contains("up_")) {
 			String after = command.split("_")[1];
+			MavenOverseer mvn = new MavenOverseer();
 			return "{\"responseMessage\":"+"\"" + 
 					mvn.UpdateDependencyToLatestGoodVersion(Integer.parseInt(after)) + "\"}";
 		}

@@ -12,8 +12,10 @@ public class MavenOverseer {
 	private String ProjectUpdateLocation = "C:\\Users\\Daniel\\git\\BuildSlackers\\TestUpdates";
 	
 	private List<Dependency> dependencyList;
+
 	
-	private boolean returnFailureMsg = false;
+	//used for mocking data -> will know it is a bad project based on name
+	public String projectName;
 	
 	/**The following is mock data to be used
 	 * I don't know how I'm going to make it have an error condition for listing
@@ -65,11 +67,9 @@ public class MavenOverseer {
 	}
 	
 	public String ListUpdateableDependencies() {
-		if (returnFailureMsg) {
-			returnFailureMsg = false;
+		if ("TestFolder6".equals(projectName)) {
 			return "\"No dependencies for this project have newer versions available.\"";
 		}
-		returnFailureMsg = true;
 		//wipe previous list
 		//dependencyList.clear();
 		//for now, since mocking data skip these steps

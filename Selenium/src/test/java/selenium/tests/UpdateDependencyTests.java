@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -23,16 +25,16 @@ public class UpdateDependencyTests {
 	
 	private static WebDriver driver;
 		
-		@BeforeClass
-		public static void setUp() throws Exception 
+		@Before
+		public void setUp() throws Exception 
 		{
 			//driver = new HtmlUnitDriver();
 			ChromeDriverManager.getInstance().setup();
 			driver = new ChromeDriver();
 		}
 		
-		@AfterClass
-		public static void  tearDown() throws Exception
+		@After
+		public void  tearDown() throws Exception
 		{
 			driver.close();
 			driver.quit();
@@ -149,7 +151,8 @@ public class UpdateDependencyTests {
 			List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body']"));
 			
 			assertEquals("Your project can be updated to the following dependencies:\n"
-					+"1. io.dropwizard.metrics:metrics-core:3.1.0:3.1.2", msg.get(msg.size() -2).getText());
+					+"1. io.dropwizard.metrics:metrics-core:3.1.0:3.1.2\n"+
+					"3. junit:junit:3.8.1:4.12", msg.get(msg.size() -2).getText());
 			
 			messageBot.sendKeys("2");
 			messageBot.sendKeys(Keys.RETURN);
