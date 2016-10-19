@@ -1,3 +1,15 @@
+###Activities suggested by Professor
+Ater we submitted the original design, we had a meeting with the professor in which he suggested we move to a completely different project. Suggestions given by the professor were:
+* Change project idea and come up with something like API Monkey which does dependency checks for C#, but do it for another language.
+* Make something that doesnt already exist.
+* Improve the workflow which seemed unrealistic and did not have much improvment over Jenkins/Travis CI
+* Change the wireframe to what the user interaction platform will look like after the bot is deployed instead of the configuration screen of the bot.
+* Add additional patterns: Identify design patters which will be used in the architecture of the bot
+
+Below is our new project DESIGN.md. We have changed our project, and written up a new DESIGN.md. We added in some additional patterns, changed what we were showing in our wireframe, and implemented our version of API Monkey.
+  
+  
+
 ### Problem Statement
 
 A basic fundamental need of software systems which evolve over time is the idea of "designing for failure". The gold standard for software availability is the "5 9's", meaning that the system will be up 99.999% of the time. Most big projects will have dependencies on third-party software. Those third-party software pieces will be updated over time, providing gains in performance, security, or reliability, among other things. To ensure your software is as up to date as possible, you will occasionally need to update your software so that it is using the latest version of any software it is dependent on. 
@@ -13,13 +25,13 @@ BuildSlackers fits most nicely into the DevOps bot category. A bot is a good sol
 ##### Design Documents
 
 ###### Wireframe
-![Wireframe](FixDesign_Wireframe.png)
+![Wireframe](Images/FixDesign_Wireframe.png)
 
 ##### Storyboard
-![Storyboard](FixDesign_Storyboard.png)
+![Storyboard](Images/FixDesign_Storyboard.png)
 
 ### Architecture Design
-![Architectural Design](FixDesign_Architecture.png)
+![Architectural Design](Images/FixDesign_Architecture.png)
 
 Our Architecture is made up of 4 main components, 3 of them for interacting with outside services, and one central module for overseeing everything, passing data between the other components, and making decisions about what needs to happen next. 
 

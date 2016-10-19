@@ -1,7 +1,25 @@
 ### Use Cases
 
 ###### Use Case 1 - Check for dependencies and update
-
+```
+Use Case: List all newer versions of a dependency
+1 Preconditions
+   User must have specified the project to check.
+   Project must have a pom.xml file
+2 Main Flow
+   Timer tells bot to check dependencies for updates [S1]. Bot finds which dependencies have updates [S2]. Bot tests each update for each dependency to see if the project can compile and pass unit tests with it [S3]. Bot provides to user list of dependencies and their latest update that passed compilation and unit tests check [S4]. User selects one dependency to update [S5]. Bot updates project to that dependency version [S6]. Bot pushes updated project to Github [S7].
+3 Subflows
+  [S1] Timer reaches its countdown mark.
+  [S2] Bot uses maven to find updateable dependency versions.
+  [S3] Bot creates copy of project for each dependency and updates that dependency until it no longer passes compilation and unit tests.
+  [S4] Bot lists dependencyGroup:artifactID:currVersion:latestVersion
+  [S5] User uses the dependencyGroup and artifactID to uniquely identify a dependency to update.
+  [S6] Bot updates the original pom.xml to use the latest "good" version of the dependency the user specified.
+  [S7] Bot pushes updated project to Github.
+4 Alternative Flows
+  [E1] User tells bot to update to a dependency that is not part of the project. 
+  [E2] No dependencies can be updated.
+```
 
 ###### Use Case 2 - List all versions of a dependency which are newer than the current version
 ```
