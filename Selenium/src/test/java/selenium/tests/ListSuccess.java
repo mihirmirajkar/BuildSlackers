@@ -69,6 +69,23 @@ public class ListSuccess {
 
 				// Type something
 				WebElement messageBot = driver.findElement(By.id("message-input"));
+				messageBot.sendKeys("@buildslackersbot change project");
+				messageBot.sendKeys(Keys.RETURN);
+				try {
+					TimeUnit.SECONDS.sleep(10);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				messageBot.sendKeys("TestFolder1");
+				messageBot.sendKeys(Keys.RETURN);
+				try {
+					TimeUnit.SECONDS.sleep(10);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 				messageBot.sendKeys("@buildslackersbot list dependencies");
 				messageBot.sendKeys(Keys.RETURN);
 

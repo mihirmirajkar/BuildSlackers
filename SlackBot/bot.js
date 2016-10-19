@@ -58,13 +58,13 @@ getNewProjectName = function(response, convo){
 			{
 				var obj = JSON.parse(response.body);
 				convo.say(obj.responseMessage);
+                convo.next();
 			});
 			
 		//convo.say("Got it. Switching project.");
 		//call function to switch the project, response should contain project name
 		//outgoing webhook?
 		//To post response to outgoing webhook respond with "text": "my response"
-		convo.next(); //Terminate conversation with status == 'completed'
 	  });
 	});
 }
