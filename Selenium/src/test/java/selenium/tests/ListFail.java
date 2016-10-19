@@ -1,6 +1,6 @@
 package selenium.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -72,7 +72,7 @@ public class ListFail {
 
 			//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 			try {
-				TimeUnit.SECONDS.sleep(5);
+				TimeUnit.SECONDS.sleep(10);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -90,8 +90,15 @@ public class ListFail {
 			//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 			List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body']"));
 			int i= msg.size();
-			System.out.println(msg.get(i-1).getText());
-			assertNotNull(msg.get(i-1));
+			
+			/**
+			 * This is a flaky test, but I don't know how else to do it
+			 * Since the user doesn't tell us what project to use
+			 * when listing dependencies
+			 * Make sure to alternate running this one and the success one
+			 */
+			assertEquals("No dependencies for this project have newer versions available." 
+					, msg.get(i-1).getText());
 			
 		}
 	

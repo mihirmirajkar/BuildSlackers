@@ -72,26 +72,33 @@ public class ChangeFail {
 
 			//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 			try {
-				TimeUnit.SECONDS.sleep(5);
+				TimeUnit.SECONDS.sleep(10);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-			messageBot.sendKeys("abcd");
+			List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body']"));
+			
+			assertEquals("TestFolder1\n"+
+					"TestFolder2\n"+
+					"TestFolder3\n"+
+					"TestFolder5\n"+
+					"TestFolder6", msg.get(msg.size() -2).getText());
+			
+			messageBot.sendKeys("TestFolder20");
 			messageBot.sendKeys(Keys.RETURN);
 
 			try {
-				TimeUnit.SECONDS.sleep(5);
+				TimeUnit.SECONDS.sleep(10);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
-			List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body']"));
+			msg = driver.findElements(By.xpath("//span[@class='message_body']"));
 			int i= msg.size();
-			System.out.println(msg.get(i-1).getText());
-			assertEquals("failed", msg.get(i-1).getText());
+			assertEquals("That is not a valid project name.", msg.get(i-1).getText());
 			
 		}
 	}

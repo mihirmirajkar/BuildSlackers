@@ -13,6 +13,8 @@ public class MavenOverseer {
 	
 	private List<Dependency> dependencyList;
 	
+	private boolean returnFailureMsg = false;
+	
 	/**The following is mock data to be used
 	 * I don't know how I'm going to make it have an error condition for listing
 	 * the dependencies, because I *shouldn't* really toggle the data, but that is probably
@@ -63,6 +65,11 @@ public class MavenOverseer {
 	}
 	
 	public String ListUpdateableDependencies() {
+		if (returnFailureMsg) {
+			returnFailureMsg = false;
+			return "\"No dependencies for this project have newer versions available.\"";
+		}
+		returnFailureMsg = true;
 		//wipe previous list
 		//dependencyList.clear();
 		//for now, since mocking data skip these steps
@@ -104,10 +111,15 @@ public class MavenOverseer {
 		String artifactID = "";
 		//check to make sure it is in bounds, if it isn't return an error message
 		
-		if (index != -1) {
+		if (index >= 0 && index < dependencyList.size()) {
 			versionToUpdateTo = dependencyList.get(index).maxUpdateableVersion;
 			dependencyGroup = dependencyList.get(index).groupID;
 			artifactID = dependencyList.get(index).artifactID;
+		} else {
+			return "That is an invalid selection.";
+		}
+		if (versionToUpdateTo.equals(dependencyList.get(index).currVersion)) {
+			return "Invalid selection. That dependency cannot be updated.";
 		}
 		//for now, just set the dependency currversion to max upateable version
 		dependencyList.get(index).currVersion = dependencyList.get(index).maxUpdateableVersion;

@@ -74,7 +74,7 @@ public class ListSuccess {
 
 				//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 				try {
-					TimeUnit.SECONDS.sleep(5);
+					TimeUnit.SECONDS.sleep(10);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -92,8 +92,10 @@ public class ListSuccess {
 				//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 				List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body']"));
 				int i= msg.size();
-				System.out.println(msg.get(i-1).getText());
-				assertNotNull(msg.get(i-1));
+				assertEquals("The following dependencies can be updated to the versions listed:\n" + 
+				"io.dropwizard.metrics:metrics-core:3.1.0:[3.1.1, 3.1.2]\n" + 
+				"com.beust:jcommander:1.58:[]\n" + 
+				"junit:junit:3.8.1:[3.8.2, 4.0, 4.2, 4.8.2, 4.10, 4.12]", msg.get(i-1).getText());
 				
 			}
 		

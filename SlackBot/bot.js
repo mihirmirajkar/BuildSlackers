@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var Botkit = require('botkit');
 var express = require('express');
 var app = express();
@@ -96,9 +95,7 @@ function getListProject(myCommand)
 	// Send a http request to url and specify a callback that will be called upon its return.
 	request(options, function (error, response, body) 
 	{
-		//console.log(body);
 		var obj = JSON.parse(response.body);
-		console.log( obj.responseMessage );
 		reply = obj.responseMessage;
 	});
 	
@@ -134,7 +131,6 @@ controller.hears('list dependencies',['direct_message', 'mention', 'direct_menti
 });
 
 listDependency = function(response, convo){
-	console.log("Checking for dependencies.... :-D ");
     convo.say("The following are the dependencies for the current project.");
     convo.say("They are displayed as follows: ");
     convo.say("dependencyGroup:artifactID:currentVersion:newerVersions");
@@ -146,11 +142,10 @@ listDependency = function(response, convo){
 	// Send a http request to url and specify a callback that will be called upon its return.
 	request(options, function (error, response, body) 
 	{
-		//console.log(body);
 		var obj = JSON.parse(response.body);
 		
-		console.log( obj.responseMessage );
 		convo.say(obj.responseMessage);
+        convo.next();
 		
 	});
 }
@@ -162,7 +157,6 @@ controller.hears('Check for updates',['direct_message', 'mention', 'direct_menti
     bot.startConversation(message, updateDependency);
 });
 updateDependency = function(response, convo){
-	console.log("Updating....");
 	// Making call to the REST Service
 	var reply = "";
 	var command = "up";
@@ -174,7 +168,6 @@ updateDependency = function(response, convo){
 		//console.log(body);
 		var obj = JSON.parse(response.body);
 		
-		console.log( obj.responseMessage );
 		convo.say(obj.responseMessage);
         //insert check here for if updates available or not
 		convo.ask("Which dependency would you like to update? " + 
