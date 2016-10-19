@@ -93,7 +93,7 @@ public class ListSuccess {
 				List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body']"));
 				int i= msg.size();
 				System.out.println(msg.get(i-1).getText());
-				assertNotNull(msg.get(i-1));
+				assertTrue((msg.get(i-1).getText()).contains("Your project can be updated to the following dependencies:"));
 				
 			}
 		

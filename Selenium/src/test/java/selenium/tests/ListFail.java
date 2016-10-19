@@ -1,6 +1,6 @@
 package selenium.tests;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -91,7 +91,7 @@ public class ListFail {
 			List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body']"));
 			int i= msg.size();
 			System.out.println(msg.get(i-1).getText());
-			assertNotNull(msg.get(i-1));
+			assertEquals("Invalid selection. That dependency cannot be updated.",msg.get(i-1).getText());
 			
 		}
 	

@@ -76,7 +76,7 @@ private static WebDriver driver;
 			e.printStackTrace();
 		}
 
-		messageBot.sendKeys("Newfolder");
+		messageBot.sendKeys("Hello-World");
 		messageBot.sendKeys(Keys.RETURN);
 
 		try {
