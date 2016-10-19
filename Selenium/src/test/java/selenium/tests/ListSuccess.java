@@ -1,11 +1,10 @@
 package selenium.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.bouncycastle.asn1.ASN1Enumerated;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -93,7 +92,7 @@ public class ListSuccess {
 				List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body']"));
 				int i= msg.size();
 				System.out.println(msg.get(i-1).getText());
-				assertTrue((msg.get(i-1).getText()).contains("Your project can be updated to the following dependencies:"));
+				assertFalse((msg.get(i-1).getText()).contains("No dependencies for this project have newer versions available."));
 				
 			}
 		
