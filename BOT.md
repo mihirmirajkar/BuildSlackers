@@ -55,4 +55,4 @@ Use Case: Switch Project
 ```
 
 The following is the screencast of the 3 use cases along with the selenium tests being run and passing
-![Screencast](http://www4.ncsu.edu/~dwrice/Videos/CSC510%20Bot.mp4)
+[Screencast](http://www4.ncsu.edu/~dwrice/Videos/CSC510%20Bot.mp4)
