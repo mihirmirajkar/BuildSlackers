@@ -7,9 +7,9 @@ Use Case: List all newer versions of a dependency
    User must have specified the project to check.
    Project must have a pom.xml file
 2 Main Flow
-   Timer tells bot to check dependencies for updates [S1]. Bot finds which dependencies have updates [S2]. Bot tests each update for each dependency to see if the project can compile and pass unit tests with it [S3]. Bot provides to user list of dependencies and their latest update that passed compilation and unit tests check [S4]. User selects one dependency to update [S5]. Bot updates project to that dependency version [S6]. Bot pushes updated project to Github [S7].
+   User uses slack to tell Bot to check for updates [S1]. Bot finds which dependencies have updates [S2]. Bot tests each update for each dependency to see if the project can compile and pass unit tests with it [S3]. Bot provides to user list of dependencies and their latest update that passed compilation and unit tests check [S4]. User selects one dependency to update [S5]. Bot updates project to that dependency version [S6]. Bot pushes updated project to Github [S7].
 3 Subflows
-  [S1] Timer reaches its countdown mark.
+  [S1] User: '@buildslackersbot check for updates'
   [S2] Bot uses maven to find updateable dependency versions.
   [S3] Bot creates copy of project for each dependency and updates that dependency until it no longer passes compilation and unit tests.
   [S4] Bot lists dependencyGroup:artifactID:currVersion:latestVersion
@@ -53,3 +53,6 @@ Use Case: Switch Project
    [E1] No project name matches with the one requested by the user.
    [E2] User doesn't have the access to the repo he/she is requesting to switch to.
 ```
+
+The following is the screencast of the 3 use cases along with the selenium tests being run and passing
+![Screencast](http://www4.ncsu.edu/~dwrice/Videos/CSC510%20Bot.mp4)
