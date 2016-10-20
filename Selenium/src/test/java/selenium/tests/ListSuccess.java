@@ -1,6 +1,6 @@
 package selenium.tests;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
