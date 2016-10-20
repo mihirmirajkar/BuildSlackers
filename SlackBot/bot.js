@@ -11,19 +11,17 @@ var urlRoot = "http://localhost:8080/SpringMVC/decisioncontroller/executecommand
 //var childProcess = require("child_process");
 
 var controller = Botkit.slackbot({
-  debug: false
+  debug: false,
+  //logLevel: 7
   //include "log: false" to disable logging
   //or a "logLevel" integer from 0 to 7 to adjust logging verbosity
 });
 
 // connect the bot to a stream of messages
 var myBot = controller.spawn({
-  //token: "xoxb-75397174165-smfPcGve2r4oeIXmMRYVuCLk",
-  token: "xoxb-93657045443-inkyDSgM6eS5IyjNz529YYGj",
- // token: process.env.ALTCODETOKEN,
+  token: "xoxb-94012091188-EFvkNyFTtlH2iTKOv2mNeJ3s",
   incoming_webhook: {
 	url:  "https://hooks.slack.com/services/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"
-   // url: "https://hooks.slack.com/services/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"
   }
 }).startRTM()
 
