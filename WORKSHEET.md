@@ -17,14 +17,24 @@ Due to the aforementioned issues, we are also slightly behind on iteration 2, wi
 | Subflow | 1 | #10, #11
 | Subflow | 2 | #15, #14, #13
 | Mock Data | Use Case 2 | #17
-| Selenium Testing Use Case 2| To do | #16
-| Use Case | 3. Change current project | In progress
+| Selenium Testing Use Case 2| To do - Finished 10/20 | #16
+| Use Case | 3. Change current project | Finished 10/18, #19, #20, #21, #22
 | Subflow | To Do | #19, #20
 | Subflow | To Do | #21, #22
-| Selenium Testing Use Case 3 | To do | 
 | Submit the Fixdesign to TA| Done| #1
 | Use Case 3 |Done |#20 #21 #22
-| Selenium Test | Use Case 3 Done|#32 #33
+| Selenium Test | Use Case 3 Done - Finished 10/20|#32 #33
 
 
 As of this time, the subflows for Use Case 3, changing the current project, have not been filled in.
+
+| Deliverable   | Item/Status   |  Issues/Tasks
+| ------------- | ------------  |  ------------
+| Use Case      | 1. Update dependencies          | 
+| Subflows for Use Case 1| Done| #25, #26, #27, #28, #29, #30
+| Mock Data | Use Case 1 | Done
+| Selenium Testing Use Case 1| Done | #36, #37
+|Screencast | Done 10/19 | #6
+|Travis CI integration | In progress | #8
+| sauce labs integration | In progress | #8
+| Task Tracking | In progress | #7
