@@ -67,12 +67,29 @@ public class ListFail {
 
 			// Type something
 			WebElement messageBot = driver.findElement(By.id("message-input"));
-			messageBot.sendKeys("@buildslackersbot list dependencies");
+			//first tell it to change to project 6
+			messageBot.sendKeys("@bsbot change project");
+			messageBot.sendKeys(Keys.RETURN);
+			try {
+				TimeUnit.SECONDS.sleep(10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			messageBot.sendKeys("TestFolder6");
+			messageBot.sendKeys(Keys.RETURN);
+			try {
+				TimeUnit.SECONDS.sleep(10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			messageBot.sendKeys("@bsbot list dependencies");
 			messageBot.sendKeys(Keys.RETURN);
 
 			//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 			try {
-				TimeUnit.SECONDS.sleep(5);
+				TimeUnit.SECONDS.sleep(10);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -90,9 +107,9 @@ public class ListFail {
 			//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 			List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body']"));
 			int i= msg.size();
-			System.out.println(msg.get(i-1).getText());
-			//assertEquals("Invalid selection. That dependency cannot be updated.",msg.get(i-1).getText());
-			assertTrue((msg.get(i-1).getText()).contains("No dependencies for this project have newer versions available."));
+			
+			assertEquals("No dependencies for this project have newer versions available." 
+					, msg.get(i-1).getText());
 		}
 	
 

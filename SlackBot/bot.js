@@ -44,7 +44,6 @@ getNewProjectName = function(response, convo){
 	var reply = "";
 	var command = "ls";
 	var options = getOption(command);
-	//command = "ls";
 	// Send a http request to url and specify a callback that will be called upon its return.
 	request(options, function (error, response, body) 
 	{
@@ -63,10 +62,6 @@ getNewProjectName = function(response, convo){
                 convo.next();
 			});
 			
-		//convo.say("Got it. Switching project.");
-		//call function to switch the project, response should contain project name
-		//outgoing webhook?
-		//To post response to outgoing webhook respond with "text": "my response"
 	  });
 	});
 }
@@ -140,7 +135,6 @@ listDependency = function(response, convo){
 	var reply = "";
 	var command = "ld";
 	var options = getOption(command);
-	//command = "ls";
 	// Send a http request to url and specify a callback that will be called upon its return.
 	request(options, function (error, response, body) 
 	{
@@ -158,6 +152,7 @@ controller.hears('(Check(.*)updat)|(updat(.*)dep)|(updat)',['direct_message', 'm
 {
     bot.startConversation(message, updateDependency);
 });
+
 updateDependency = function(response, convo){
 	// Making call to the REST Service
 	var reply = "";
@@ -182,12 +177,7 @@ updateDependency = function(response, convo){
 				convo.say(obj.responseMessage);
                 convo.next();
 			});
-			
-		//convo.say("Got it. Switching project.");
-		//call function to switch the project, response should contain project name
-		//outgoing webhook?
-		//To post response to outgoing webhook respond with "text": "my response"
-		//convo.next(); //Terminate conversation with status == 'completed'
+
 	  });
 	});
 }

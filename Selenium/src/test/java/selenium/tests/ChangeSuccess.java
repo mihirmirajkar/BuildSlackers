@@ -65,30 +65,37 @@ private static WebDriver driver;
 
 		// Type something
 		WebElement messageBot = driver.findElement(By.id("message-input"));
-		messageBot.sendKeys("@buildslackersbot change project");
+		messageBot.sendKeys("@bsbot change project");
 		messageBot.sendKeys(Keys.RETURN);
 
 		//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 		try {
-			TimeUnit.SECONDS.sleep(5);
+			TimeUnit.SECONDS.sleep(10);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		messageBot.sendKeys("Hello-World");
-		messageBot.sendKeys(Keys.RETURN);
-
-		try {
-			TimeUnit.SECONDS.sleep(5);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
 		List<WebElement> msg = driver.findElements(By.xpath("//span[@class='message_body']"));
+		
+		assertEquals("TestFolder1\n"+
+				"TestFolder2\n"+
+				"TestFolder3\n"+
+				"TestFolder5\n"+
+				"TestFolder6", msg.get(msg.size() -2).getText());
+		
+		messageBot.sendKeys("TestFolder1");
+		messageBot.sendKeys(Keys.RETURN);
+
+		try {
+			TimeUnit.SECONDS.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
+		msg = driver.findElements(By.xpath("//span[@class='message_body']"));
 		int i= msg.size();
-		System.out.println(msg.get(i-1).getText());
 		assertEquals("Success", msg.get(i-1).getText());
 		
 	}
