@@ -24,8 +24,8 @@ import io.github.bonigarcia.wdm.ChromeDriverManager;
 public class ListSuccess {
 
 	public static final String USERNAME = "danwrice";
-	  public static final String ACCESS_KEY = "00c68c13-cc35-446f-8403-3d49531e4c2b";
-	  public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
+	public static final String ACCESS_KEY = "00c68c13-cc35-446f-8403-3d49531e4c2b";
+	public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
 		
 		private static WebDriver driver;
 			

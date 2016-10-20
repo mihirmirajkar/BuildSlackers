@@ -2,6 +2,7 @@ package selenium.tests;
 
 import static org.junit.Assert.assertEquals;
 
+import java.net.URL;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -13,6 +14,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -21,12 +24,16 @@ import io.github.bonigarcia.wdm.ChromeDriverManager;
 public class ChangeSuccess {
 private static WebDriver driver;
 	
+public static final String USERNAME = "danwrice";
+public static final String ACCESS_KEY = "00c68c13-cc35-446f-8403-3d49531e4c2b";
+public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
+
 	@BeforeClass
 	public static void setUp() throws Exception 
 	{
-		//driver = new HtmlUnitDriver();
+		DesiredCapabilities caps = DesiredCapabilities.chrome();
 		ChromeDriverManager.getInstance().setup();
-		driver = new ChromeDriver();
+		driver = new RemoteWebDriver(new URL(URL), caps);
 	}
 	
 	@AfterClass
