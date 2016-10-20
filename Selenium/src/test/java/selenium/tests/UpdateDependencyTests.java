@@ -69,7 +69,7 @@ public class UpdateDependencyTests {
 
 			// Type something
 			WebElement messageBot = driver.findElement(By.id("message-input"));
-			messageBot.sendKeys("@buildslackersbot check for updates");
+			messageBot.sendKeys("@bsbot check for updates");
 			messageBot.sendKeys(Keys.RETURN);
 
 			//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
@@ -132,7 +132,7 @@ public class UpdateDependencyTests {
 
 			// Type something
 			WebElement messageBot = driver.findElement(By.id("message-input"));
-			messageBot.sendKeys("@buildslackersbot check for updates");
+			messageBot.sendKeys("@bsbot check for updates");
 			messageBot.sendKeys(Keys.RETURN);
 
 			//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);

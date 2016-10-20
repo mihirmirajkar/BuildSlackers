@@ -68,7 +68,7 @@ public class ListFail {
 			// Type something
 			WebElement messageBot = driver.findElement(By.id("message-input"));
 			//first tell it to change to project 6
-			messageBot.sendKeys("@buildslackersbot change project");
+			messageBot.sendKeys("@bsbot change project");
 			messageBot.sendKeys(Keys.RETURN);
 			try {
 				TimeUnit.SECONDS.sleep(10);
@@ -84,7 +84,7 @@ public class ListFail {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			messageBot.sendKeys("@buildslackersbot list dependencies");
+			messageBot.sendKeys("@bsbot list dependencies");
 			messageBot.sendKeys(Keys.RETURN);
 
 			//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);

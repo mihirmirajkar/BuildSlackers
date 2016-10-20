@@ -67,7 +67,7 @@ public class ChangeFail {
 
 			// Type something
 			WebElement messageBot = driver.findElement(By.id("message-input"));
-			messageBot.sendKeys("@buildslackersbot change project");
+			messageBot.sendKeys("@bsbot change project");
 			messageBot.sendKeys(Keys.RETURN);
 
 			//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);

@@ -69,7 +69,7 @@ public class ListSuccess {
 
 				// Type something
 				WebElement messageBot = driver.findElement(By.id("message-input"));
-				messageBot.sendKeys("@buildslackersbot change project");
+				messageBot.sendKeys("@bsbot change project");
 				messageBot.sendKeys(Keys.RETURN);
 				try {
 					TimeUnit.SECONDS.sleep(10);
@@ -86,7 +86,7 @@ public class ListSuccess {
 					e.printStackTrace();
 				}
 				
-				messageBot.sendKeys("@buildslackersbot list dependencies");
+				messageBot.sendKeys("@bsbot list dependencies");
 				messageBot.sendKeys(Keys.RETURN);
 
 				//wait.withTimeout(3, TimeUnit.SECONDS).ignoring(StaleElementReferenceException.class);
