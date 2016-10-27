@@ -42,8 +42,7 @@ As of this time, the subflows for Use Case 3, changing the current project, have
 
 ## Service Task Tracking
 
-##### Week 3
-As of this time, the subflows for Use Case 3, changing the current project, have not been filled in.
+##### Week 1
 
 | Deliverable   | Item/Status   |  Issues/Tasks
 | ------------- | ------------  |  ------------
