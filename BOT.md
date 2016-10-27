@@ -65,3 +65,6 @@ Use Case: Switch Project
 
 The following is the screencast of the 3 use cases along with the selenium tests being run and passing
 [Screencast](http://www4.ncsu.edu/~dwrice/Videos/CSC510%20Bot.mp4)
+
+#### Travis CI and sauce labs
+We also tried to integrate Travis CI and sauce labs. To do this, we moved this project over to public Github. That project is at https://github.com/danwrice/BuildSlackers. We were able to integrate Travis CI, and we integrated sauce labs into our Selenium tests when we run them locally, but we were not able to fully bring together sauce labs for each Travis CI build. Each Travis build will try to run the sauce labs, but we did not set up a tunnel for them, so the sauce labs portion will just return immediately.

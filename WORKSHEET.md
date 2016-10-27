@@ -35,6 +35,6 @@ As of this time, the subflows for Use Case 3, changing the current project, have
 | Mock Data | Use Case 1 | Done
 | Selenium Testing Use Case 1| Done | #36, #37
 |Screencast | Done 10/19 | #6
-|Travis CI integration | In progress | #8
-| sauce labs integration | In progress | #8
-| Task Tracking | In progress | #7
+|Travis CI integration | Done | #8
+| sauce labs integration | In progress - Partially completed | #8
+| Task Tracking | Done | #7
