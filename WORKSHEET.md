@@ -26,6 +26,7 @@ Due to the aforementioned issues, we are also slightly behind on iteration 2, wi
 | Selenium Test | Use Case 3 Done - Finished 10/20|#32 #33
 
 
+##### Week 3
 As of this time, the subflows for Use Case 3, changing the current project, have not been filled in.
 
 | Deliverable   | Item/Status   |  Issues/Tasks
@@ -38,3 +39,15 @@ As of this time, the subflows for Use Case 3, changing the current project, have
 |Travis CI integration | Done | #8
 | sauce labs integration | In progress - Partially completed | #8
 | Task Tracking | Done | #7
+
+## Service Task Tracking
+
+##### Week 3
+As of this time, the subflows for Use Case 3, changing the current project, have not been filled in.
+
+| Deliverable   | Item/Status   |  Issues/Tasks
+| ------------- | ------------  |  ------------
+| Use Case      | 1. Update dependencies          | 
+| Subflows for Use Case 1| Done| #41, #42, #45
+| Subflows for Use Case 2 | Done | #48
+| Task Tracking | In Progress | #49
