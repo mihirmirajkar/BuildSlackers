@@ -12,72 +12,43 @@ public class MavenOverseer {
 	private String ProjectUpdateLocation = "C:\\Users\\Daniel\\git\\BuildSlackers\\TestUpdates";
 	
 	private List<Dependency> dependencyList;
-
 	
-	//used for mocking data -> will know it is a bad project based on name
-	public String projectName;
-	
-	/**The following is mock data to be used
-	 * I don't know how I'm going to make it have an error condition for listing
-	 * the dependencies, because I *shouldn't* really toggle the data, but that is probably
-	 * what I will end up doing
-	 */
-	private Dependency dep1 = new Dependency();
-	private Dependency dep2 = new Dependency();
-	private Dependency dep3 = new Dependency();
 	
 	
 	public static void main(String[] args) {
 		MavenOverseer runner = new MavenOverseer();
-		//System.out.print(runner.Run());
-		System.out.print(runner.FindLatestGoodVersions());
-		runner.UpdateDependencyToLatestGoodVersion(1);
+		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "cd");
+		builder.redirectErrorStream(true);
+		Process p;
+		try {
+			p = builder.start();
+		BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		String line = r.readLine();
+		while (line != null) {
+			System.out.println(line);
+			line = r.readLine();
+		}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//runner.UpdateDependencyToLatestGoodVersion(1);
 	}
 	
 	public MavenOverseer() {
 		dependencyList = new ArrayList<Dependency>();
-		//initialize the mock data -> get rid of it later
-		dep1.groupID = "io.dropwizard.metrics";
-		dep1.artifactID = "metrics-core";
-		dep1.currVersion = "3.1.0";
-		dep1.maxUpdateableVersion = "3.1.2";
-		dep1.newerVersions.add("3.1.1");
-		dep1.newerVersions.add("3.1.2");
-		
-		dep2.groupID = "com.beust";
-		dep2.artifactID = "jcommander";
-		dep2.maxUpdateableVersion = "1.58";
-		dep2.currVersion = "1.58";
-		
-		dep3.groupID = "junit";
-		dep3.artifactID = "junit";
-		dep3.currVersion = "3.8.1";
-		dep3.maxUpdateableVersion = "4.12";
-		dep3.newerVersions.add("3.8.2");
-		dep3.newerVersions.add("4.0");
-		dep3.newerVersions.add("4.2");
-		dep3.newerVersions.add("4.8.2");
-		dep3.newerVersions.add("4.10");
-		dep3.newerVersions.add("4.12");
-		
-		dependencyList.add(dep1);
-		dependencyList.add(dep2);
-		dependencyList.add(dep3);
-		
+		//initialize the mock data -> get rid of it later		
 	}
 	
 	public String ListUpdateableDependencies() {
-		if ("TestFolder6".equals(projectName)) {
-			return "\"No dependencies for this project have newer versions available.\"";
-		}
 		//wipe previous list
 		//dependencyList.clear();
 		//for now, since mocking data skip these steps
-		/*this.MakeDirectory();
+		this.MakeDirectory();
 		this.CopyProject();
 		this.FindDependencies();
 		this.FindUpdatesForDependencies();
-		this.DeleteProject();*/
+		this.DeleteProject();
 		StringBuilder listDeps = new StringBuilder();
 		listDeps.append("\"The following dependencies can be updated to the versions listed:\\n");
 		boolean atLeastOneUpdate = false;
@@ -121,9 +92,7 @@ public class MavenOverseer {
 		if (versionToUpdateTo.equals(dependencyList.get(index).currVersion)) {
 			return "Invalid selection. That dependency cannot be updated.";
 		}
-		//for now, just set the dependency currversion to max upateable version
-		dependencyList.get(index).currVersion = dependencyList.get(index).maxUpdateableVersion;
-		/*ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c",
+		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c",
 				"cd " + ProjectLocation + " && mvn versions:use-next-releases -Dincludes=" + 
 				dependencyGroup + ":" + artifactID);
 		builder.redirectErrorStream(true);
@@ -152,23 +121,22 @@ public class MavenOverseer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}*/
+		}
 		return "Update Successful";
 	}
 	
 	//will just run, and return the dependency group:artifact id:currversion:latestupdateableversion
 	public String FindLatestGoodVersions() {
 		//need to update one at a time -> find list of current dependencies (then wipe it)
-		//dependencyList.clear();
-		//skip these steps for now, just return the mocking data
-		/*this.MakeDirectory();
+		dependencyList.clear();
+		this.MakeDirectory();
 		this.CopyProject();
-		this.FindDependencies();*/
+		this.FindDependencies();
 		//now have list of the dependencies
 		//get the first of them, and until update doesn't work anymore, update->compile->test
 		//if all those pass, if version higher than maxupdateableversion, set new maxupdateableversion
 		int count = dependencyList.size();
-		/*for(int i = 0; i < count; i++) {
+		for(int i = 0; i < count; i++) {
 			//set maxupdateable version to current one
 			Dependency currDep = dependencyList.get(i);
 			dependencyList.remove(i); //have to remove, so can add it back later
@@ -178,6 +146,7 @@ public class MavenOverseer {
 				ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", 
 						"cd " + ProjectUpdateLocation + " && mvn versions:use-next-releases -Dincludes=" + 
 						currDep.groupID + ":" + currDep.artifactID);
+				
 				builder.redirectErrorStream(true);
 				try {
 					//whether or not there was an updated version last time,
@@ -215,7 +184,7 @@ public class MavenOverseer {
 			this.DeleteProject();
 			this.MakeDirectory();
 			this.CopyProject();
-		}*/
+		}
 		//have gone through all of them, need to return the list
 		boolean atleastOneUpdate = false;
 		StringBuilder sb = new StringBuilder();
