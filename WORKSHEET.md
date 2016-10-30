@@ -54,4 +54,5 @@ As of this time, the subflows for Use Case 3, changing the current project, have
 ##### Week 1
 | Deliverable   | Item/Status   |  Issues/Tasks
 | ------------- | ------------  |  ------------
-| Use Case      | 2. Switch Project          | 
+| Use Case      | 3. Switch Project          | 
+
