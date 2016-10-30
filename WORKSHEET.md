@@ -50,3 +50,8 @@ As of this time, the subflows for Use Case 3, changing the current project, have
 | Subflows for Use Case 1| Done| #41, #42, #45
 | Subflows for Use Case 2 | Done | #48
 | Task Tracking | In Progress | #49
+
+##### Week 1
+| Deliverable   | Item/Status   |  Issues/Tasks
+| ------------- | ------------  |  ------------
+| Use Case      | 2. Switch Project          | 
