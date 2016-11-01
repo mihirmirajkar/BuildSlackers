@@ -32,12 +32,11 @@ public class MavenOverseer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//runner.UpdateDependencyToLatestGoodVersion(1);
+		System.out.println(runner.FindLatestGoodVersions());
 	}
 	
 	public MavenOverseer() {
-		dependencyList = new ArrayList<Dependency>();
-		//initialize the mock data -> get rid of it later		
+		dependencyList = new ArrayList<Dependency>();		
 	}
 	
 	public String ListUpdateableDependencies() {
@@ -140,7 +139,6 @@ public class MavenOverseer {
 			//set maxupdateable version to current one
 			Dependency currDep = dependencyList.get(i);
 			dependencyList.remove(i); //have to remove, so can add it back later
-			currDep.maxUpdateableVersion = currDep.currVersion;
 			boolean updateAvailable = true;
 			while (updateAvailable) {
 				ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", 
@@ -191,7 +189,8 @@ public class MavenOverseer {
 		sb.append("\"Your project can be updated to the following dependencies:\\n");
 		for (int i = 0; i < dependencyList.size(); i++) {
 			Dependency curr = dependencyList.get(i);
-			if (!curr.maxUpdateableVersion.equals(curr.currVersion)) {
+			if (curr.maxUpdateableVersion != null && 
+					!curr.maxUpdateableVersion.equals(curr.currVersion)) {
 				atleastOneUpdate = true;
 				sb.append((i+1) +". " + curr.groupID + ":" + curr.artifactID + ":" + curr.currVersion + ":" + curr.maxUpdateableVersion);
 				sb.append("\\n");
@@ -211,7 +210,29 @@ public class MavenOverseer {
 		try {
 			Process p = builder.start();
 			builder.redirectErrorStream(true);
-			return true;
+			BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line;
+			while (true) {
+				line = r.readLine();
+				if (line == null) {
+					break;
+				}
+				if (line.contains("Tests run")) {
+					String[] testResults = line.split(",");
+					for (int i = 0; i < testResults.length; i++) {
+						if (testResults[i].contains("Failures") || 
+								testResults[i].contains("Errors") || testResults[i].contains("Skipped")) {
+							//now split on space
+							String[] numTests = testResults[i].split(" ");
+							//look at second one
+							if (!numTests[2].equals("0")) {
+								return false;
+							}
+						}
+					}
+					return true;
+				}
+			}
 			//for the mocking, return true
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -226,13 +247,22 @@ public class MavenOverseer {
 		builder.redirectErrorStream(true);
 		try {
 			Process p = builder.start();
-			//for now just return true
-			return true;
+			BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line;
+			while (true) {
+				line = r.readLine();
+				if (line == null) {
+					break;
+				}
+				if (line.contains("BUILD SUCCESS")) {
+					return true;
+				}
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return true;
+		return false;
 	}
 	
 	private void FindUpdatesForDependencies() {
