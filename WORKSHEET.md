@@ -55,4 +55,7 @@ As of this time, the subflows for Use Case 3, changing the current project, have
 | Deliverable   | Item/Status   |  Issues/Tasks
 | ------------- | ------------  |  ------------
 | Use Case      | 3. Switch Project          | 
+| Subflow for Use Case 3  | In progress | #51 #52
+| Subflow Part 2-a | Complete | #53
+| Subflow Part 2-b | Pending | #54
 
