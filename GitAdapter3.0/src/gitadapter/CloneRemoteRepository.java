@@ -1,4 +1,4 @@
-package org.dstadler.jgit.porcelain;
+package gitadapter;
 
 /*
    Copyright 2013, 2014 Dominik Stadler
