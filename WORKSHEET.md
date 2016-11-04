@@ -59,3 +59,13 @@ As of this time, the subflows for Use Case 3, changing the current project, have
 | Subflow Part 2-a | Complete | #53
 | Subflow Part 2-b | Pending | #54
 
+
+
+##### Week 2
+| Deliverable   | Item/Status   |  Issues/Tasks
+| ------------- | ------------  |  ------------
+| Use Case      | 1. Update dependencies          | 
+| Subflows for Use Case 1| Done| #43, #44, #46, #47
+| Use Case      | 2. List dependencies
+| Subflows for Use Case 2 | Done | #47
+| Task Tracking | In Progress | #49
