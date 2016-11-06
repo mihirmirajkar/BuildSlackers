@@ -32,7 +32,7 @@ import java.util.Collection;
  */
 public class ListRemoteRepository {
 
-    private static final String REMOTE_URL = "https://github.com/sumershende/";
+    private static final String REMOTE_URL = "https://github.com/BuildSlackers";
 
     public static void main(String[] args) throws GitAPIException {
         // then clone
