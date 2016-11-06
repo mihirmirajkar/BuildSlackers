@@ -1,137 +1,70 @@
-package edu.ncsu.mavenbot.controller;
+
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Arrays;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Scanner;
 
+import org.eclipse.jgit.api.Git;
+import org.eclipse.jgit.api.errors.GitAPIException;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+
 public class GitAdapter {
-
-	public String listRepo()
-	{
-		String repo=null;
-		//System.out.println("Working on "+repo+".");
-		//System.out.println("mihir");
-		String CurrentDirectory= System.getProperty("user.dir");
-		//System.out.println(CurrentDirectory);
+	String changeRepo(String repoName) throws IOException, GitAPIException {
+		String RepoUrl="https://github.com/BuildSlackers/";
 		
-		File file = new File(CurrentDirectory+"/BS-Mock");
-		String[] directories = file.list(new FilenameFilter() {
-		  @Override
-		  public boolean accept(File current, String name) {
-		    return new File(current, name).isDirectory();
-		  }
-		});
-		//System.out.println("Select Repo");
-		StringBuilder ret = new StringBuilder();
-		ret.append("\"");
-		for (int i = 0; i < directories.length; i++) {
-			ret.append(directories[i]);
-			ret.append("\\n");
-		}
-		ret.append("\"");
-		return ret.toString();
-	}
-	public String changeRepo(String repo)
-	{
-		String CurrentDirectory= System.getProperty("user.dir");
-		
-		File file = new File(CurrentDirectory+"/BS-Mock");
-		String[] directories = file.list(new FilenameFilter() {
-		  @Override
-		  public boolean accept(File current, String name) {
-		    return new File(current, name).isDirectory();
-		  }
-		});
-		
-		File source = new File(CurrentDirectory+"/BS-Mock/"+repo);
-		File dest = new File(CurrentDirectory+"/local/"+repo);
-		File file1 = new File(CurrentDirectory+"/local");
-        //deleting User folder
-				
-        if(file1.exists())
+		String CurrentDirectory=System.getProperty("user.dir");
+		File file = new File(CurrentDirectory+"/try");
+		if(file.exists())
         {
-        	deleteFolder(file1);
+        	deleteFolder(file);
         }
-        file1.mkdir();
-		
-
-    	//make sure source exists
-    	if(!source.exists()){
-
-           return "That is not a valid project name.";
-           //just exit
-
-        }else{
-
-           try{
-        	copyFolder(source,dest);
-           }catch(IOException e){
-        	e.printStackTrace();
-        	//error, just exit
-           }
+        file.mkdir();
+        System.out.println("Cloning from " + RepoUrl + " to " + CurrentDirectory);
+        try (Git result = Git.cloneRepository()
+                .setURI(RepoUrl+repoName)
+                .setDirectory(file)
+                .call()) {
+        	  System.out.println("Having repository: " + result.getRepository().getDirectory());
         }
-
-    	return "Success";
-    }
+        	//System.out.println("These are the branches" +listRepo());
+        return "success";
+        }
+        	
 	
-
-    public static void copyFolder(File src, File dest)
-    	throws IOException{
-
-    	if(src.isDirectory()){
-
-    		//if directory not exists, create it
-    		if(!dest.exists()){
-    		   dest.mkdir();
-    		   System.out.println("Directory copied from "
-                              + src + "  to " + dest);
-    		}
-
-    		//list all the directory contents
-    		String files[] = src.list();
-
-    		for (String file : files) {
-    		   //construct the src and dest file structure
-    		   File srcFile = new File(src, file);
-    		   File destFile = new File(dest, file);
-    		   //recursive copy
-    		   copyFolder(srcFile,destFile);
-    		}
-
-    	}else{
-    		//if file, then copy it
-    		//Use bytes stream to support all file types
-    		InputStream in = new FileInputStream(src);
-    	        OutputStream out = new FileOutputStream(dest);
-
-    	        byte[] buffer = new byte[1024];
-
-    	        int length;
-    	        //copy the file content in bytes
-    	        while ((length = in.read(buffer)) > 0){
-    	    	   out.write(buffer, 0, length);
-    	        }
-
-    	        in.close();
-    	        out.close();
-    	        System.out.println("File copied from " + src + " to " + dest);
-    	}
-    }
-
-    public static void deleteFolder(File directory)
+	private static String listRepo() throws MalformedURLException, IOException {
+		// TODO Auto-generated method stub
+		String charset = "UTF-8";
+		String responseBody ;
+		StringBuilder sb = new StringBuilder();
+		String url = "https://api.github.com/users/BuildSlackers/repos";
+		URLConnection connection = new URL(url).openConnection();
+		connection.setRequestProperty("Accept-Charset", charset);
+		InputStream response = connection.getInputStream();
+		//InputStream response = new URL(url).openStream();
+		try (Scanner scanner = new Scanner(response)) {
+		    responseBody = scanner.useDelimiter("\\A").next();
+		    System.out.println(responseBody);
+		}
+		 JSONArray obj = new JSONArray(responseBody);
+		 for (int i =0;i<obj.length();i++)
+		 {
+			 JSONObject obj1 = obj.getJSONObject(i);
+			 sb.append(obj1.getString("name")+"\n");
+			 //System.out.println(obj1.getString("name"));
+			 
+		 }
+		 return sb.toString();
+		
+	}
+	
+	public static void deleteFolder(File directory)
     {
-   // 	String repo="TrialDirectory";
-  //  	String SRC_FOLDER = System.getProperty("user.dir");
- //   	SRC_FOLDER+="/User/"+repo;
-//    	File directory = new File(SRC_FOLDER);
-
-    	//make sure directory exists
     	if(!directory.exists()){
 
            System.out.println("Directory does not exist.");
@@ -188,4 +121,5 @@ public class GitAdapter {
     		System.out.println("File is deleted : " + file.getAbsolutePath());
     	}
     }
+	
 }
