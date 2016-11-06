@@ -12,10 +12,16 @@ import org.json.JSONObject;
 
 public class RequestUrl {
 	
-	private static void request() throws MalformedURLException, IOException {
+	
+	public static void main(String[] args) throws MalformedURLException, IOException {
+		request();
+	}
+	
+	private static String request() throws MalformedURLException, IOException {
 		// TODO Auto-generated method stub
 		String charset = "UTF-8";
 		String responseBody ;
+		StringBuilder sb = new StringBuilder();
 		String url = "https://api.github.com/users/BuildSlackers/repos";
 		URLConnection connection = new URL(url).openConnection();
 		connection.setRequestProperty("Accept-Charset", charset);
@@ -25,10 +31,16 @@ public class RequestUrl {
 		    responseBody = scanner.useDelimiter("\\A").next();
 		    System.out.println(responseBody);
 		}
-		 JSONObject obj = new JSONObject(responseBody);
-		 JSONArray arr = obj.getJSONArray("name");
-		 for (int i = 0; i < arr.length(); i++)
-		     System.out.println(arr.getInt(i));
-		 
+		 JSONArray obj = new JSONArray(responseBody);
+		// JSONArray arr = obj.getJSONArray("name");
+		 for (int i =0;i<obj.length();i++)
+		 {
+			 JSONObject obj1 = obj.getJSONObject(i);
+			 sb.append(obj1.getString("name")+"\n");
+			 System.out.println(obj1.getString("name"));
+			 
+		 }
+		 return sb.toString();
+		
 	}
 }
