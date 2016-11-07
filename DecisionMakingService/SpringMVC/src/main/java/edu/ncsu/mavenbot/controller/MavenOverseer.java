@@ -6,10 +6,11 @@ import java.util.*;
 public class MavenOverseer {
 	
 	//the name of the directory that contains the project to look for updates
-	public String ProjectLocation = "C:\\Users\\Daniel\\git\\BuildSlackers\\TestProjectID";
+	public String CurrentDirectory=System.getProperty("user.dir");
+	public String ProjectLocation = CurrentDirectory+"\\try\\";
 	
 	//the name of the directory to copy the project to to look for updates
-	private String ProjectUpdateLocation = "C:\\Users\\Daniel\\git\\BuildSlackers\\TestUpdates";
+	private String ProjectUpdateLocation = CurrentDirectory+"\\TestUpdates";
 	
 	private List<Dependency> dependencyList;
 	
@@ -319,6 +320,8 @@ public class MavenOverseer {
 			String line;
 			while (true) {
 				line = r.readLine();
+				System.out.println(line);
+				System.out.println(ProjectUpdateLocation);
 				if (line == null) {
 					break;
 				}
@@ -348,25 +351,39 @@ public class MavenOverseer {
 	}
 	
 	private void MakeDirectory() {
-		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", 
-				"mkdir " + ProjectUpdateLocation);
-		try {
-			Process p = builder.start();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		File file = new File(ProjectUpdateLocation);
+		if(file.exists())
+        {
+        	GitAdapter.deleteFolder(file);
+        }
+        file.mkdir();
+//		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", 
+//				"mkdir " + ProjectUpdateLocation);
+//		try {
+//			Process p = builder.start();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 	
 	private void CopyProject() {
-		ProcessBuilder builder = new ProcessBuilder("cmd.exe", 
-				"/c", "xcopy " + ProjectLocation + " " + ProjectUpdateLocation + " /e");
+		File src= new File(ProjectLocation);
+		File dest= new File(ProjectUpdateLocation);
 		try {
-			Process p = builder.start();
+			GitAdapter.copyFolder(src, dest);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+//		ProcessBuilder builder = new ProcessBuilder("cmd.exe", 
+//				"/c", "xcopy " + ProjectLocation + " " + ProjectUpdateLocation + " /e");
+//		try {
+//			Process p = builder.start();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 		
 		/**
