@@ -69,3 +69,7 @@ As of this time, the subflows for Use Case 3, changing the current project, have
 | Use Case      | 2. List dependencies
 | Subflows for Use Case 2 | Done | #47
 | Task Tracking | In Progress | #49
+| Use Case      | 3. Switch Project          | 
+| Subflow for Use Case 3  | In progress | #51 #52
+| Subflow Part 2-a | Complete | #53
+| Subflow Part 2-b | Pending | #54
