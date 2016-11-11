@@ -1,10 +1,12 @@
 package edu.ncsu.mavenbot.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -41,7 +43,7 @@ public class GitAdapter {
         }
         	
 	
-	public static String listRepo() throws MalformedURLException, IOException {
+	public String listRepo() throws MalformedURLException, IOException {
 		// TODO Auto-generated method stub
 		String charset = "UTF-8";
 		String responseBody ;
@@ -56,16 +58,61 @@ public class GitAdapter {
 		    System.out.println(responseBody);
 		}
 		 JSONArray obj = new JSONArray(responseBody);
+		 sb.append("\"");
 		 for (int i =0;i<obj.length();i++)
 		 {
 			 JSONObject obj1 = obj.getJSONObject(i);
-			 sb.append(obj1.getString("name")+"\n");
+			 sb.append(obj1.getString("name")+"\\n");
 			 //System.out.println(obj1.getString("name"));
 			 
 		 }
+		 sb.append("\"");
 		 return sb.toString();
 		
 	}
+	
+	public boolean pushRepo(String repoName) {
+		String repo = "https://danwrice:ProjectsVilla16@github.com/BuildSlackers/";
+		ProcessBuilder builder = new ProcessBuilder("cmd.exe", 
+				"/c", "cd " + System.getProperty("user.dir") + "/try" + " && git commit -am \"Update dependency\"");
+		try {
+			Process p = builder.start();
+			builder.redirectErrorStream(true);
+			BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line;
+			while (true) {
+				line = r.readLine();
+				if (line == null) {
+					break;
+				}
+				System.out.println(line);
+			}
+			ProcessBuilder builder2 = new ProcessBuilder("cmd.exe", 
+					"/c", "cd " + System.getProperty("user.dir") + "/try" + " && git push --repo " + repo + repoName);
+			try {
+				Process p2 = builder2.start();
+				builder2.redirectErrorStream(true);
+				BufferedReader r2 = new BufferedReader(new InputStreamReader(p2.getInputStream()));
+				String line2;
+				while (true) {
+					line2 = r2.readLine();
+					if (line2 == null) {
+						break;
+					}
+					System.out.println(line2);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
 	public static void copyFolder(File src, File dest)
 	    	throws IOException{
 
@@ -124,7 +171,6 @@ public class GitAdapter {
 
            }catch(IOException e){
                e.printStackTrace();
-               System.exit(0);
            }
         }
 

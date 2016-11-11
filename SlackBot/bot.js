@@ -126,9 +126,9 @@ controller.hears('(list|show|what|which|how)(.*)(dependenc|jar|link)',['direct_m
 });
 
 listDependency = function(response, convo){
-    convo.say("The following are the dependencies for the current project.");
-    convo.say("They are displayed as follows: ");
-    convo.say("dependencyGroup:artifactID:currentVersion:newerVersions");
+    //convo.say("The following are the dependencies for the current project.");
+    //convo.say("They are displayed as follows: ");
+    //convo.say("dependencyGroup:artifactID:currentVersion:newerVersions");
 	// Making call to the REST Service
 	var reply = "";
 	var command = "ld";
@@ -137,7 +137,7 @@ listDependency = function(response, convo){
 	request(options, function (error, response, body) 
 	{
 		var obj = JSON.parse(response.body);
-		
+		console.log(obj.responseMessage);
 		convo.say(obj.responseMessage);
         convo.next();
 		

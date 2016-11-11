@@ -42,7 +42,7 @@ public class MavenOverseer {
 	
 	public String ListUpdateableDependencies() {
 		//wipe previous list
-		//dependencyList.clear();
+		dependencyList.clear();
 		//for now, since mocking data skip these steps
 		this.MakeDirectory();
 		this.CopyProject();
@@ -68,7 +68,7 @@ public class MavenOverseer {
 		return "\"No dependencies for this project have newer versions available.\"";
 	}
 	
-	public String UpdateDependencyToLatestGoodVersion(int parIndex) {
+	public boolean UpdateDependencyToLatestGoodVersion(int parIndex) {
 		//need to have the dependencyList be the same (or have them pass in the version as well)
 		//assuming dependencyList is the same, just update til it reaches maxVersion
 		//need to make these updates on the project repo, instead of the fake, copy one
@@ -87,10 +87,10 @@ public class MavenOverseer {
 			dependencyGroup = dependencyList.get(index).groupID;
 			artifactID = dependencyList.get(index).artifactID;
 		} else {
-			return "That is an invalid selection.";
+			return false;
 		}
 		if (versionToUpdateTo.equals(dependencyList.get(index).currVersion)) {
-			return "Invalid selection. That dependency cannot be updated.";
+			return false;
 		}
 		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c",
 				"cd " + ProjectLocation + " && mvn versions:use-next-releases -Dincludes=" + 
@@ -122,7 +122,7 @@ public class MavenOverseer {
 				e.printStackTrace();
 			}
 		}
-		return "Update Successful";
+		return true;
 	}
 	
 	//will just run, and return the dependency group:artifact id:currversion:latestupdateableversion
@@ -352,10 +352,10 @@ public class MavenOverseer {
 	
 	private void MakeDirectory() {
 		File file = new File(ProjectUpdateLocation);
-		if(file.exists())
+		/*if(file.exists())
         {
         	GitAdapter.deleteFolder(file);
-        }
+        }*/
         file.mkdir();
 //		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", 
 //				"mkdir " + ProjectUpdateLocation);

@@ -19,7 +19,6 @@ import edu.ncsu.mavenbot.controller.MavenOverseer;
 @Controller
 @RequestMapping("/decisioncontroller")
 public class DecisionMakingController {
-	
 	MavenOverseer mvn = new MavenOverseer();
 	String project = "";
 	
@@ -29,6 +28,7 @@ public class DecisionMakingController {
 		if (command.equals("ls")) {
 			
 			GitAdapter adapter = new GitAdapter();
+			//do nothing comment
 			return "{\"responseMessage\":" + adapter.listRepo() + "}";
 		}
 		
@@ -41,17 +41,30 @@ public class DecisionMakingController {
 		}
 		
 		if (command.equals("ld")) {
-	//		mvn.projectName = project;
+	//		mvn.projectName = project; new comment
+			//MavenOverseer mvn = new MavenOverseer();
 			return "{\"responseMessage\":" + mvn.ListUpdateableDependencies() + "}";
 		}
 		
 		if (command.equals("up")) {
+			//MavenOverseer mvn = new MavenOverseer();
+			//empty comment
 			return "{\"responseMessage\":" + mvn.FindLatestGoodVersions() + "}";
 		}
 		if (command.contains("up_")) {
 			String after = command.split("_")[1];
+			//MavenOverseer mvn = new MavenOverseer();
+			boolean success = mvn.UpdateDependencyToLatestGoodVersion(Integer.parseInt(after));
+			if (success) {
+				GitAdapter adapter = new GitAdapter();
+				boolean success2 = adapter.pushRepo(project); //need to push back up
+				if (success2) {
+					return "{\"responseMessage\":"+"\"" + 
+							"Update Successful" +  "\"}";
+				}
+			}
 			return "{\"responseMessage\":"+"\"" + 
-					mvn.UpdateDependencyToLatestGoodVersion(Integer.parseInt(after)) + "\"}";
+					"Failure" +  "\"}";
 		}
 		
 		return "";
