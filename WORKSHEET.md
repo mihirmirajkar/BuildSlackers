@@ -64,3 +64,14 @@ As of this time, the subflows for Use Case 3, changing the current project, have
 | Subflow for Use Case 3  | In progress | #51 #52
 | Subflow Part 2-a | Complete | #53
 | Subflow Part 2-b | Pending | #54
+
+We actually ended up ahead of schedule, and so apart from some last minute bug fixes,
+our 3rd milestone did not contain too many tasks that were still left outstanding.
+
+##### Week 3
+| Deliverable   | Item/Status   |  Issues/Tasks
+| ------------- | ------------  |  ------------
+| Use Case      | 1. Update dependencies          | 
+| Subflows for Use Case 1| Done| #55
+| Task Tracking | Done | #49
+| Screencast | Done | #50
