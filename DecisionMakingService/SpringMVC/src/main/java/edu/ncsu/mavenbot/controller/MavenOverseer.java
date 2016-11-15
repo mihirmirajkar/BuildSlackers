@@ -356,14 +356,6 @@ public class MavenOverseer {
         	GitAdapter.deleteFolder(file);
         }*/
         file.mkdir();
-//		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", 
-//				"mkdir " + ProjectUpdateLocation);
-//		try {
-//			Process p = builder.start();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 	}
 	
 	private void CopyProject() {
@@ -375,14 +367,6 @@ public class MavenOverseer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		ProcessBuilder builder = new ProcessBuilder("cmd.exe", 
-//				"/c", "xcopy " + ProjectLocation + " " + ProjectUpdateLocation + " /e");
-//		try {
-//			Process p = builder.start();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 	}
 		
 		/**
@@ -398,16 +382,7 @@ public class MavenOverseer {
 				c.delete();
 			}
 		}
-		copyProject.delete();
-		/*ProcessBuilder builder = new ProcessBuilder("cmd.exe", 
-				"/c", "rmdir " + ProjectUpdateLocation + " /s /q");
-		try {
-			Process p = builder.start();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-			
+		copyProject.delete();			
 	}
 	
 	private class Dependency {
