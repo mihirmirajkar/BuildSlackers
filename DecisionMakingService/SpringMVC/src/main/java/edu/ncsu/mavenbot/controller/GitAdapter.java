@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import org.eclipse.jgit.api.Git;
@@ -20,7 +22,14 @@ import org.json.JSONObject;
 
 
 public class GitAdapter {
+	
+	//really should make it a hashmap or dictionary or something of that sort, but oh well
+	private List<String> possibleRepos = new ArrayList<String>();
+	
 	String changeRepo(String repoName) throws IOException, GitAPIException {
+		if (!possibleRepos.contains(repoName)) {
+			return "That is not a valid repo.";
+		}
 		String RepoUrl="https://github.com/BuildSlackers/";
 		
 		String CurrentDirectory=System.getProperty("user.dir");
@@ -45,6 +54,7 @@ public class GitAdapter {
 	
 	public String listRepo() throws MalformedURLException, IOException {
 		// TODO Auto-generated method stub
+		possibleRepos = new ArrayList<String>();
 		String charset = "UTF-8";
 		String responseBody ;
 		StringBuilder sb = new StringBuilder();
@@ -63,6 +73,8 @@ public class GitAdapter {
 		 {
 			 JSONObject obj1 = obj.getJSONObject(i);
 			 sb.append(obj1.getString("name")+"\\n");
+			 //add it to the list
+			 possibleRepos.add(obj1.getString("name"));
 			 //System.out.println(obj1.getString("name"));
 			 
 		 }

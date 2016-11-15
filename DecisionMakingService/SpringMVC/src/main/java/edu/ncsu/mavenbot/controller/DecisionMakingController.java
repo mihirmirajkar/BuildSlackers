@@ -21,13 +21,14 @@ import edu.ncsu.mavenbot.controller.MavenOverseer;
 public class DecisionMakingController {
 	MavenOverseer mvn = new MavenOverseer();
 	String project = "";
+	GitAdapter adapter = new GitAdapter();
 	
 	@ResponseBody
 	@RequestMapping(value="/executecommand/{command}", method = RequestMethod.GET)
 	public String getMovie(@PathVariable String command, ModelMap model) throws IOException, GitAPIException {
 		if (command.equals("ls")) {
 			
-			GitAdapter adapter = new GitAdapter();
+			//GitAdapter adapter = new GitAdapter();
 			//do nothing comment
 			return "{\"responseMessage\":" + adapter.listRepo() + "}";
 		}
@@ -36,7 +37,7 @@ public class DecisionMakingController {
 			//get the project name
 			String projectName = command.split("_")[1];
 			project = projectName;
-			GitAdapter adapter = new GitAdapter();
+			//GitAdapter adapter = new GitAdapter();
 			return "{\"responseMessage\":\"" + adapter.changeRepo(projectName) + "\"}";
 		}
 		
