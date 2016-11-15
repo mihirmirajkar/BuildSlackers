@@ -62,7 +62,15 @@ public class DecisionMakingController {
 		if (command.contains("up_")) {
 			String after = command.split("_")[1];
 			//MavenOverseer mvn = new MavenOverseer();
-			boolean success = mvn.UpdateDependencyToLatestGoodVersion(Integer.parseInt(after));
+			int depIndex = -1;
+			try {
+				depIndex = Integer.parseInt(after);
+				//catch error
+			} catch (NumberFormatException e) {
+				return "{\"responseMessage\":"+"\"" + 
+						"That is an invalid dependency selection." +  "\"}";
+			}
+			boolean success = mvn.UpdateDependencyToLatestGoodVersion(depIndex);
 			if (success) {
 				GitAdapter adapter = new GitAdapter();
 				boolean success2 = adapter.pushRepo(project); //need to push back up

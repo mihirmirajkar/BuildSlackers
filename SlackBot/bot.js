@@ -164,7 +164,8 @@ updateDependency = function(response, convo){
 		var obj = JSON.parse(response.body);
 		
 		convo.say(obj.responseMessage);
-        if (obj.responseMessage !== "This bot has not yet been configured to monitor a project.") {
+        if (obj.responseMessage !== "This bot has not yet been configured to monitor a project." && 
+        obj.responseMessage !== "No updates are available for any dependencies.") {
             //insert check here for if updates available or not
 		convo.ask("Which dependency would you like to update? " + 
                         "Please enter the number of the dependency.", function(response, convo) {

@@ -48,7 +48,7 @@ public class MavenOverseer {
 		this.CopyProject();
 		this.FindDependencies();
 		this.FindUpdatesForDependencies();
-		this.DeleteProject();
+		this.DeleteProject(ProjectUpdateLocation);
 		StringBuilder listDeps = new StringBuilder();
 		listDeps.append("\"The following dependencies can be updated to the versions listed:\\n");
 		boolean atLeastOneUpdate = false;
@@ -89,7 +89,8 @@ public class MavenOverseer {
 		} else {
 			return false;
 		}
-		if (versionToUpdateTo.equals(dependencyList.get(index).currVersion)) {
+		//make sure not null also, comment
+		if (versionToUpdateTo == null || versionToUpdateTo.equals(dependencyList.get(index).currVersion)) {
 			return false;
 		}
 		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c",
@@ -180,7 +181,7 @@ public class MavenOverseer {
 			//no more updates available, so add in the maxupdateable version
 			dependencyList.add(i, currDep);
 			//now need to reset it to what it was before -> need to delete currProject and make new copy
-			this.DeleteProject();
+			this.DeleteProject(ProjectUpdateLocation);
 			this.MakeDirectory();
 			this.CopyProject();
 		}
@@ -320,8 +321,6 @@ public class MavenOverseer {
 			String line;
 			while (true) {
 				line = r.readLine();
-				System.out.println(line);
-				System.out.println(ProjectUpdateLocation);
 				if (line == null) {
 					break;
 				}
@@ -389,15 +388,25 @@ public class MavenOverseer {
 		/**
 		 * Performs cleanup, so that at the end we delete the copy of the project
 		 */
-	private void DeleteProject() {
-		ProcessBuilder builder = new ProcessBuilder("cmd.exe", 
+	private void DeleteProject(String dir) {
+		File copyProject = new File(dir);
+		//delete all files first
+		for (File c: copyProject.listFiles()) {
+			if (c.isDirectory()) {
+				DeleteProject(c.getAbsolutePath());
+			} else {
+				c.delete();
+			}
+		}
+		copyProject.delete();
+		/*ProcessBuilder builder = new ProcessBuilder("cmd.exe", 
 				"/c", "rmdir " + ProjectUpdateLocation + " /s /q");
 		try {
 			Process p = builder.start();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 			
 	}
 	
