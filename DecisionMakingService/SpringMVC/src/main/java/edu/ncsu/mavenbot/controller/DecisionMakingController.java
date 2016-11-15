@@ -44,12 +44,19 @@ public class DecisionMakingController {
 		if (command.equals("ld")) {
 	//		mvn.projectName = project; new comment
 			//MavenOverseer mvn = new MavenOverseer();
+			//make sure they configured project already
+			if (project == null || project.trim().length() == 0 || project.equals("")) {
+				return "{\"responseMessage\":" + "\"This bot has not yet been configured to monitor a project.\"" + "}";
+			}
 			return "{\"responseMessage\":" + mvn.ListUpdateableDependencies() + "}";
 		}
 		
 		if (command.equals("up")) {
 			//MavenOverseer mvn = new MavenOverseer();
-			//empty comment
+			//empty comment new comment
+			if (project == null || project.trim().length() == 0 || project.equals("")) {
+				return "{\"responseMessage\":" + "\"This bot has not yet been configured to monitor a project.\"" + "}";
+			}
 			return "{\"responseMessage\":" + mvn.FindLatestGoodVersions() + "}";
 		}
 		if (command.contains("up_")) {

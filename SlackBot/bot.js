@@ -164,7 +164,8 @@ updateDependency = function(response, convo){
 		var obj = JSON.parse(response.body);
 		
 		convo.say(obj.responseMessage);
-        //insert check here for if updates available or not
+        if (obj.responseMessage !== "This bot has not yet been configured to monitor a project.") {
+            //insert check here for if updates available or not
 		convo.ask("Which dependency would you like to update? " + 
                         "Please enter the number of the dependency.", function(response, convo) {
 			command = "up_"+response.text;
@@ -175,8 +176,21 @@ updateDependency = function(response, convo){
 				convo.say(obj.responseMessage);
                 convo.next();
 			});
+                        });
+        }
+        //insert check here for if updates available or not
+		/*convo.ask("Which dependency would you like to update? " + 
+                        "Please enter the number of the dependency.", function(response, convo) {
+			command = "up_"+response.text;
+			options = getOption(command);
+			request(options, function (error, response, body) 
+			{
+				var obj = JSON.parse(response.body);
+				convo.say(obj.responseMessage);
+                convo.next();
+			});
 
-	  });
+	  });*/
 	});
 }
 //$$$$$$$$$$$$$$$$$$$$$$
