@@ -8,4 +8,4 @@ Our bot expects the maven projects in a repo to be in the top level - that is, p
 
 | Test ID | Description | Expected Results | Actual Results
 | -------- | --------------- | ------------ | --------------
-| ChangeRepo | * Preconditions 1. The user is logged into the Slack team this bot is a member of, and is on the #general channel. <br> * Steps 1. User types '@bsbot2 change project 2. User types 'TestRepo2' | 1. The bot says (in some order) <br> 'a <br> brepo <br> TestRepo1 <br> NoDependenciesRepo <br> TestRepo2' <br> 2. Bot says 'success' |
+| ChangeRepo | ** Preconditions ** <br> <br>  1. The user is logged into the Slack team this bot is a member of, and is on the #general channel. <br> <br> ** Steps ** <br> <br> 1. User types '@bsbot2 change project 2. User types 'TestRepo2' | 1. The bot says (in some order) <br> 'a <br> brepo <br> TestRepo1 <br> NoDependenciesRepo <br> TestRepo2' <br> <br> 2. Bot says 'success' |
