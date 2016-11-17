@@ -85,4 +85,11 @@ our 3rd milestone did not contain too many tasks that were still left outstandin
 | Setup Amazon EC2 server    | Completed         |
 | Install necessary packages  | Completed | Forever support not available for Windows
 | Ansible configuration   | In progress   | Porting to windows from linux
-| Running SlackBot    | Phase-1 complete (bot online)  | Bot not responding
+| Running SlackBot    | Phase-1 complete (bot online)  | Bot not responding 
+| Acceptance Test Use Case #1 | Complete | #59
+| Switching to nonexistent repo | Bug - Complete | #78
+| Running use case 2 or 3 before running use case 1 | Bug - complete | #79 
+| Incorrect list of updateable dependencies | Bug - Complete | #80
+| Task Tracking | In Progress | #57
+| Bot Testing | In Progress | #58
+| Make Test Repositories | In Progress | #72
