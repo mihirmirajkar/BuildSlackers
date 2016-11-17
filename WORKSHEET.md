@@ -75,3 +75,14 @@ our 3rd milestone did not contain too many tasks that were still left outstandin
 | Subflows for Use Case 1| Done| #55
 | Task Tracking | Done | #49
 | Screencast | Done | #50
+
+## Deployment Task Tracking
+
+##### Week 1
+
+| Deliverable   | Item/Status   |  Issues/Tasks
+| ------------- | ------------  |  ------------
+| Setup Amazon EC2 server    | Completed         |
+| Install necessary packages  | Completed | Forever support not available for Windows
+| Ansible configuration   | In progress   | Porting to windows from linux
+| Running SlackBot    | Phase-1 complete (bot online)  | Bot not responding
