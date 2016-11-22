@@ -93,3 +93,9 @@ our 3rd milestone did not contain too many tasks that were still left outstandin
 | Task Tracking | In Progress | #57
 | Bot Testing | In Progress | #58
 | Make Test Repositories | In Progress | #72
+
+##### Week 2
+
+| Deliverable   | Item/Status   |  Issues/Tasks
+| ------------- | ------------  |  ------------
+| Convert to Linux commands | In progress | #82
