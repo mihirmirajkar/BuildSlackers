@@ -13,11 +13,9 @@ Our bot expects the maven projects in a repo to be in the top level - that is, p
   
 ###### Acceptance Test Use Case #3 -Update Dependencies
 
-Description: Use Case #3 This allows the users to update the dependency they want by listing out all the dependencies that can be updated and after the user selects the dependency which he/she wants the bot to update then the bot will update and will push the newly update the project to the original organisational github
+Description: Use Case #3 This allows the users to update the dependency they want by listing out all the dependencies that can be updated and after the user selects the dependency which he/she wants the bot to update then the bot will update and will push the newly update the project to the originalrepo.
 
-The repo name that the user asks the bot to switch to will be used by the bot for future commands, such as listing the dependencies, or updating a dependency.
-
-Our bot expects the maven projects in a repo to be in the top level - that is, pom.xml must be in the root of the repository, and not in a directory. The test repositories we have set up adhere to this requirement.
+Our bot expects that the project has an error free pom.xml file which maven can read and which maven will use to read which dependencies does the project have and which ones can be upated.
 
 | Test ID | Description | Expected Results | Actual Results
 | -------- | --------------- | ------------ | --------------
