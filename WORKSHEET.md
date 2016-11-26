@@ -99,3 +99,5 @@ our 3rd milestone did not contain too many tasks that were still left outstandin
 | Deliverable   | Item/Status   |  Issues/Tasks
 | ------------- | ------------  |  ------------
 | Convert to Linux commands | In progress | #82
+|  Acceptance Test Use Case #3 | Complete | #61
+|  Acceptance Test Use Case #2 | Complete | #60
