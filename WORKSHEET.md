@@ -102,3 +102,5 @@ our 3rd milestone did not contain too many tasks that were still left outstandin
 |  Acceptance Test Use Case #3 | Complete | #61
 |  Acceptance Test Use Case #2 | Complete | #60
 | Provisioning with EC2 | Done | #83
+| Installing all the dependencies| Done | #64 #65 #66 #67 #68 #69 #70 #71 #73
+| Running the bot with forever | Completed | #74 #75
