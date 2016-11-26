@@ -104,3 +104,5 @@ our 3rd milestone did not contain too many tasks that were still left outstandin
 | Provisioning with EC2 | Done | #83
 | Installing all the dependencies| Done | #64 #65 #66 #67 #68 #69 #70 #71 #73
 | Running the bot with forever | Completed | #74 #75
+| Generating executable .war file | Done | #77
+| Automating the installation process | Completed | #83
