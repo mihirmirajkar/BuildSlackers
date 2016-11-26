@@ -101,3 +101,4 @@ our 3rd milestone did not contain too many tasks that were still left outstandin
 | Convert to Linux commands | In progress | #82
 |  Acceptance Test Use Case #3 | Complete | #61
 |  Acceptance Test Use Case #2 | Complete | #60
+| Provisioning with EC2 | Done | #83
