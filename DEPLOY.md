@@ -13,7 +13,7 @@ Our bot expects the maven projects in a repo to be in the top level - that is, p
 
 ###### Acceptance Test Use Case #2 -List Dependencies
 
-Description: Use Case #3 This usecase tells the user what all dependencies can be updated and also shows what all newer versions are available or the dependency.
+Description: Use Case #2 This usecase tells the user what all dependencies can be updated and also shows what all newer versions are available or the dependency.
 
 Our bot expects the maven projects in a repo to be in the top level - that is, pom.xml must be in the root of the repository, and not in a directory. The test repositories we have set up adhere to this requirement.
 
@@ -30,4 +30,4 @@ Our bot expects that the project has an error free pom.xml file which maven can 
 
 | Test ID | Description | Expected Results | Actual Results
 | -------- | --------------- | ------------ | --------------
-| UpdateDependencies | **Preconditions** <br> <br>  1. The project that the user wants to work on should not have errors in pom.xml file. <br> 2. The user has changed the the project he.she wants to work on by sending the command change repo to the bot. <br> <br> **Steps** <br> <br> 1. User types '@bsbot2 update dependency' <br> <br> 2. User types the number of dependency he/she wants to update | 1. The bot says (in some order) <br> Your project can be updated to the following dependencies:<br> 1. junit:junit:3.8.1:4.12<br> 2. io.dropwizard.metrics:metrics-core:3.1.0:3.1.2 <br> Which dependency would you like to update? Please enter the number of the dependency. <br> <br> 2. Bot says 'Updatte Successful' |
+| UpdateDependencies | **Preconditions** <br> <br>  1. The project that the user wants to work on should not have errors in pom.xml file. <br> 2. The user has changed the the project he.she wants to work on by sending the command change repo to the bot. <br> <br> **Steps** <br> <br> 1. User types '@bsbot2 update dependency' <br> <br> 2. User types the number of dependency he/she wants to update | 1. The bot says (in some order) <br> Your project can be updated to the following dependencies:<br> 1. junit:junit:3.8.1:4.12<br> 2. io.dropwizard.metrics:metrics-core:3.1.0:3.1.2 <br> Which dependency would you like to update? Please enter the number of the dependency. <br> <br> 2. Bot says 'Update Successful' |
