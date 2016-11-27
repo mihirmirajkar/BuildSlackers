@@ -18,7 +18,7 @@ public class MavenOverseer {
 	
 	public static void main(String[] args) { 
 		MavenOverseer runner = new MavenOverseer();
-		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "cd");
+		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", "cd");
 		builder.redirectErrorStream(true);
 		Process p;
 		try {
@@ -93,7 +93,7 @@ public class MavenOverseer {
 		if (versionToUpdateTo == null || versionToUpdateTo.equals(dependencyList.get(index).currVersion)) {
 			return false;
 		}
-		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c",
+		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c",
 				"cd " + ProjectLocation + " && mvn versions:use-next-releases -Dincludes=" + 
 				dependencyGroup + ":" + artifactID);
 		builder.redirectErrorStream(true);
@@ -143,7 +143,7 @@ public class MavenOverseer {
 			dependencyList.remove(i); //have to remove, so can add it back later
 			boolean updateAvailable = true;
 			while (updateAvailable) {
-				ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", 
+				ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", 
 						"cd " + ProjectUpdateLocation + " && mvn versions:use-next-releases -Dincludes=" + 
 						currDep.groupID + ":" + currDep.artifactID);
 				
@@ -207,8 +207,8 @@ public class MavenOverseer {
 	}
 	
 	private boolean TestsPass() {
-		ProcessBuilder builder = new ProcessBuilder("cmd.exe", 
-				"/c", "cd " + ProjectUpdateLocation + "&& mvn test");
+		ProcessBuilder builder = new ProcessBuilder("/bin/bash", 
+				"-c", "cd " + ProjectUpdateLocation + "&& mvn test");
 		try {
 			Process p = builder.start();
 			builder.redirectErrorStream(true);
@@ -244,8 +244,8 @@ public class MavenOverseer {
 	}
 	
 	private boolean CompileProject() {
-		ProcessBuilder builder = new ProcessBuilder("cmd.exe", 
-				"/c", "cd " + ProjectUpdateLocation + " && mvn compile");
+		ProcessBuilder builder = new ProcessBuilder("/bin/bash", 
+				"-c", "cd " + ProjectUpdateLocation + " && mvn compile");
 		builder.redirectErrorStream(true);
 		try {
 			Process p = builder.start();
@@ -268,7 +268,7 @@ public class MavenOverseer {
 	}
 	
 	private void FindUpdatesForDependencies() {
-		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", 
+		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", 
 				"cd " + ProjectUpdateLocation + " && mvn versions:use-next-releases");
 		builder.redirectErrorStream(true);
 		try {
@@ -312,8 +312,8 @@ public class MavenOverseer {
 	}
 	
 	private void FindDependencies() {
-		ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", 
-				"cd " + ProjectUpdateLocation + " && mvn -o dependency:list");
+		ProcessBuilder builder = new ProcessBuilder("/bin/bash", "-c", 
+				"cd " + ProjectUpdateLocation + " && mvn org.apache.maven.plugins:maven-dependency-plugin:2.4:list");
 		builder.redirectErrorStream(true);
 		try {
 			Process p = builder.start();
