@@ -106,3 +106,10 @@ our 3rd milestone did not contain too many tasks that were still left outstandin
 | Running the bot with forever | Completed | #74 #75
 | Generating executable .war file | Done | #77
 | Automating the installation process | Completed | #83
+
+##### Week 3
+
+| Deliverable   | Item/Status   |  Issues/Tasks
+| ------------- | ------------  |  ------------
+| Convert to Linux commands | Complete | #82, #84
+
