@@ -112,4 +112,5 @@ our 3rd milestone did not contain too many tasks that were still left outstandin
 | Deliverable   | Item/Status   |  Issues/Tasks
 | ------------- | ------------  |  ------------
 | Convert to Linux commands | Complete | #82, #84
+| Add TAs to Github/Slack | Done | #62
 
