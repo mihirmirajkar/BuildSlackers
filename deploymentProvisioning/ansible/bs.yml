@@ -94,6 +94,6 @@
     - shell: export ALTCODETOKEN=xoxb-109957558358-EUKjoBrCl3blSubqEIunZeNg 
 
     - name: Start bot.js
-      command: forever BSBOT/bot.js xoxb-109957558358-EUKjoBrCl3blSubqEIunZeNg 
+      command: forever start BSBOT/bot.js xoxb-109957558358-EUKjoBrCl3blSubqEIunZeNg 
       when: "forever_list.stdout.find('BSBOT/bot.js') == -1"
 
