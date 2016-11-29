@@ -1,0 +1,99 @@
+---
+- hosts: default
+  sudo: yes
+  remote_user: root
+  gather_facts: no
+  pre_tasks:
+
+    - name: apt-get update
+      raw: apt-get update
+    
+    - name: 'install python'
+      raw: sudo apt-get -y install python
+
+
+  tasks:
+
+    - name: Install Npm
+      apt: pkg=npm state=latest update_cache=true
+
+    - name: Install nodejs-legacy
+      apt: pkg=nodejs-legacy state=installed update_cache=true
+
+    - name: Install forever
+      command: npm install forever -g
+
+    - name: Install Git
+      apt: pkg=git state=installed update_cache=true
+
+    - name: Check if Appfolder exists
+      command: ls
+      register: list
+
+    - name: Clone if doesn't exist
+      command: git clone https://buildslackertestuser:Buildslacker123@github.com/mihirmirajkar/BSBOT.git
+      when: "list.stdout.find('BSBOT') == -1"
+    
+    - name: Create folder
+      command: touch hello
+
+    - name: Install JRE
+      apt: pkg=default-jre state=installed update_cache=true
+
+    - name: Install jdk
+      apt: pkg=default-jdk state=installed update_cache=true
+
+    - name: Install Maven
+      apt: pkg=maven state=installed update_cache=true
+
+#    - name: Install Maven Dependency plugin
+#      command: mvn org.apache.maven.plugins:maven-dependency-plugin:2.6:get -Dartifact=groupId:artifactId:version || true
+#      ignore_errors: yes
+
+    - name: Install Tomcat7
+      apt: pkg=tomcat7 state=installed update_cache=true
+
+    - name: Run npm install
+      command: npm install --prefix ./BSBOT
+
+    - name: Check list of apps running
+      command: forever list
+      register: forever_list
+      changed_when: false
+
+    - name: copy .war file
+      command: cp BSBOT/SpringMVC.war /var/lib/tomcat7/webapps
+
+    - name: Restart tomcat7 with webapp
+      command: service tomcat7 restart
+
+    - name: Make directories
+      command : chmod 777 -R /usr/share
+      ignore_errors: yes
+
+    - name: Make directories
+      command : mkdir -m 777 BSBOT/try
+      ignore_errors: yes
+
+    - name: Make directories
+      command : chmod 777 -R BSBOT/try
+      ignore_errors: yes
+
+    - name: Make directories
+      command : mkdir -m 777 BSBOT/TestUpdates
+      ignore_errors: yes
+
+    - name: Make directories
+      command : mkdir -m 777 BSBOT/repository
+      ignore_errors: yes
+
+#    - name: SET environment token
+#      shell: echo token is 
+#      environment: ALTCODETOKEN: 
+
+    - shell: export ALTCODETOKEN=xoxb-109957558358-EUKjoBrCl3blSubqEIunZeNg 
+
+    - name: Start bot.js
+      command: forever BSBOT/bot.js xoxb-109957558358-EUKjoBrCl3blSubqEIunZeNg 
+      when: "forever_list.stdout.find('BSBOT/bot.js') == -1"
+
