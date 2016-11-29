@@ -15,7 +15,7 @@ If the project is able to compile and pass all unit tests with newer versions of
 
 Our bot allows the user to switch which Github repository for which to update dependencies, and is completely driven through Slack commands.
 
-This will produce a commit on Github, which updates the pom.xml like the following: ![BotCommit](Images/BotCommit.jpg)
+This will produce a commit on Github, which updates the pom.xml like the following: ![BotCommit](Images/BotCommit.png)
 
 
 ##### Reflections
