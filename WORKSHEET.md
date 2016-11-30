@@ -113,4 +113,9 @@ our 3rd milestone did not contain too many tasks that were still left outstandin
 | ------------- | ------------  |  ------------
 | Convert to Linux commands | Complete | #82, #84
 | Add TAs to Github/Slack | Done | #62
+| Minor changes to commands to make it run on linux enviroment| Done|#86
+| List Dependency not working| fixed|#84
+| Deploy Testing | Done | #58
+| Make Test Repos| Done| #72
+| Deploy Screencase | Done| #56
 
