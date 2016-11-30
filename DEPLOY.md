@@ -35,3 +35,7 @@ NOTE: There is a large delay in the commands to update dependencies as the serve
 | Test ID | Description | Expected Results | Actual Results
 | -------- | --------------- | ------------ | --------------
 | UpdateDependencies | **Preconditions** <br> <br>  1. The project that the user wants to work on should not have errors in pom.xml file. <br> 2. The user has changed the the project he.she wants to work on by sending the command change repo to the bot. <br> <br> **Steps** <br> <br> 1. User types '@bsbot2 update dependency' <br> <br> 2. User types the number of dependency he/she wants to update | 1. The bot says (in some order) <br> Your project can be updated to the following dependencies:<br> 1. junit:junit:3.8.1:4.12<br> 2. io.dropwizard.metrics:metrics-core:3.1.0:3.1.2 <br> Which dependency would you like to update? Please enter the number of the dependency. <br> <br> 2. Bot says 'Update Successful' |
+
+Link for the Demo:
+You can watch the demo for this project at
+https://youtu.be/aaTTc-D_PJ8
