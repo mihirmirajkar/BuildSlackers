@@ -17,6 +17,8 @@ Description: Use Case #2 This usecase tells the user what all dependencies can b
 
 Our bot expects the maven projects in a repo to be in the top level - that is, pom.xml must be in the root of the repository, and not in a directory. The test repositories we have set up adhere to this requirement.
 
+NOTE: There is a large delay in the commands to list dependencies as the server takes a long time to execute the maven commands.
+
 | Test ID | Description | Expected Results | Actual Results
 | -------- | --------------- | ------------ | --------------
 | UpdateDependencies | **Preconditions** <br> <br>  1. The project that the user wants to work on should not have errors in pom.xml file. <br> 2. The user has changed the the project he.she wants to work on by sending the command 'change repo' to the bot. <br> <br> **Steps** <br> <br> 1. User types '@bsbot2 list dependencies' | 1. The bot says (in some order) <br>The following dependencies can be updated to the versions listed:<br>junit:junit:3.8.1:[3.8.2, 4.0, 4.1, 4.2, 4.3, 4.3.1, 4.4, 4.5, 4.6, 4.7, 4.8, 4.8.1, 4.8.2, 4.9, 4.10, 4.11-beta-1, 4.11, 4.12-beta-1, 4.12-beta-2, 4.12-beta-3, 4.12]<br> io.dropwizard.metrics:metrics-core:3.1.0:[3.1.1, 3.1.2]<br>org.slf4j:slf4j-api:1.7.7:[]<br>com.beust:jcommander:1.58:[] |
@@ -27,6 +29,8 @@ Our bot expects the maven projects in a repo to be in the top level - that is, p
 Description: Use Case #3 This allows the users to update the dependency they want by listing out all the dependencies that can be updated and after the user selects the dependency which he/she wants the bot to update then the bot will update and will push the newly update the project to the originalrepo.
 
 Our bot expects that the project has an error free pom.xml file which maven can read and which maven will use to read which dependencies does the project have and which ones can be upated.
+
+NOTE: There is a large delay in the commands to update dependencies as the server takes a long time to execute the maven commands.
 
 | Test ID | Description | Expected Results | Actual Results
 | -------- | --------------- | ------------ | --------------
