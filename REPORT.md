@@ -1,5 +1,5 @@
 ##### Screencast
-Our ![screencast](https://www.youtube.com/watch?v=DuXbmsDGaJw) talks about our bot, the problem it solves, and shows our 3 use cases.
+Our [screencast](https://www.youtube.com/watch?v=DuXbmsDGaJw) talks about our bot, the problem it solves, and shows our 3 use cases.
 
 ##### Problem our bot solved
 
