@@ -10,6 +10,8 @@ Incompatibility issues can often arise from updating versions of different depen
 
 ##### Primary Features
 
+The BuildSlacker bot is capable of handling multiple repositories in an Organizational GitHub where multiple teams work on different projects, each in its repository of its own.  
+
 In our bot, we were able to implement the ability to pull a project from a Github repository and check whether it had any dependencies with newer versions available.
 
 If newer versions of dependencies are available, our bot checks those newer versions to make sure they are compatible with the project source code by using maven to upgrade dependencies, compile, and run any unit tests.
