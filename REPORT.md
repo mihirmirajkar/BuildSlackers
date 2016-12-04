@@ -37,12 +37,12 @@ The development process as a whole was spotty. Creating the mock data first, bef
   
 ##### Limitations and Future Work
 
-Our bot has several limitations which will provide for future work:
-1. We can only track one Github project at a time, so a user will have to continuously tell our bot to switch projects in order to update all of the user's projects.
-2. Our bot requires the pom.xml file to be in the root of the Github repository. We are unable to find any pom.xml that is within a directory.
-3. Our bot can only update one dependency at a time - it would be nice to find the maximum versions of each dependency in a project that can be updated together and update all of them at the same time. While this does provide some 
-interesting questions (such as if versions of two dependencies are incompatible with each other, which dependency should we update, and which should we leave as is) we could find a way to work around this.
-4. Our bot is also unable to be configured with a different user/organization's Github credentials. The future work would be to allow the user to update the bot, and switch which Github user/organization it acts as.
-5. Our bot requires that no updates be made to the project while it is trying to update dependencies. This could lead to merge conflicts on Github. We need to have the bot refresh his copy of the project locally before committing to Github.
-6. Our bot can only be run on Linux machines. We need to configure it to identify whether it is on a Windows or Linux machine, and then take the necessary actions for the type of machine it is on.
-7. Our bot is unable to deal with branches. We would like our bot to be able to update dependencies for a specific branch, rather than just the master branch.
+Our bot has several limitations which will provide for future work:  
+1. We can only track one Github project at a time, so a user will have to continuously tell our bot to switch projects in order to update all of the user's projects.  
+2. Our bot requires the pom.xml file to be in the root of the Github repository. We are unable to find any pom.xml that is within a directory.  
+3. Our bot can only update one dependency at a time - it would be nice to find the maximum versions of each dependency in a project that can be updated together and update all of them at the same time. While this does provide some   
+interesting questions (such as if versions of two dependencies are incompatible with each other, which dependency should we update, and which should we leave as is) we could find a way to work around this.  
+4. Our bot is also unable to be configured with a different user/organization's Github credentials. The future work would be to allow the user to update the bot, and switch which Github user/organization it acts as.  
+5. Our bot requires that no updates be made to the project while it is trying to update dependencies. This could lead to merge conflicts on Github. We need to have the bot refresh his copy of the project locally before committing to Github.  
+6. Our bot can only be run on Linux machines. We need to configure it to identify whether it is on a Windows or Linux machine, and then take the necessary actions for the type of machine it is on.  
+7. Our bot is unable to deal with branches. We would like our bot to be able to update dependencies for a specific branch, rather than just the master branch.  
