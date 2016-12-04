@@ -27,10 +27,13 @@ This will produce a commit on Github, which updates the pom.xml like the followi
 
 The development process as a whole was spotty. Creating the mock data first, before trying to implement everything, definitely worked out well as it allowed
  us to focus on the front end user interaction at the beginning. Once we knew we had that done, we were able to leave it alone, and focus completely on the implementation of our project.
+ While working on this project, we all were exposed to a whole new set of technologies. Our group meetings which helped us share a diverse prospective towards a single problem.
  
  Another thing that worked well was using Github issues and milestones as that allowed us to assign tasks to people and track our progress. However, very rarely were we conscientious about 
  sticking to our development plan. Most of the time we failed to complete issues in the milestone we were supposed to, and everything still got left until the end of each deliverable before it was completed. This lead to some frustrating nights, and decreased productivity and a slightly worse implementation, because
-  when it came to crunchtime, we had to work just to get the basic functionality rather than being able to modify, enhance, and make our bot more sturdy.
+  when it came to crunchtime, we had to work just to get the basic functionality rather than being able to modify, enhance, and make our bot more sturdy.  
+ 
+ 
   
 ##### Limitations and Future Work
 
