@@ -25,8 +25,7 @@ This will produce a commit on Github, which updates the pom.xml like the followi
 
 ##### Reflections
 
-The development process as a whole was spotty. Creating the mock data first, before trying to implement everything, definitely worked out well as it allowed
- us to focus on the front end user interaction at the beginning. Once we knew we had that done, we were able to leave it alone, and focus completely on the implementation of our project.
+The development process as a whole was spotty. Creating the mock data first, before trying to implement everything, definitely worked out well as it allowed us to focus on the front end user interaction at the beginning. Once we knew we had that done, we were able to leave it alone, and focus completely on the implementation of our project.
  While working on this project, we all were exposed to a whole new set of technologies. Our group meetings which helped us share a diverse prospective towards a single problem.
  
  Another thing that worked well was using Github issues and milestones as that allowed us to assign tasks to people and track our progress. However, very rarely were we conscientious about 
@@ -45,4 +44,5 @@ interesting questions (such as if versions of two dependencies are incompatible 
 4. Our bot is also unable to be configured with a different user/organization's Github credentials. The future work would be to allow the user to update the bot, and switch which Github user/organization it acts as.  
 5. Our bot requires that no updates be made to the project while it is trying to update dependencies. This could lead to merge conflicts on Github. We need to have the bot refresh his copy of the project locally before committing to Github.  
 6. Our bot can only be run on Linux machines. We need to configure it to identify whether it is on a Windows or Linux machine, and then take the necessary actions for the type of machine it is on.  
-7. Our bot is unable to deal with branches. We would like our bot to be able to update dependencies for a specific branch, rather than just the master branch.  
+7. Our bot is unable to deal with branches. We would like our bot to checkout a specific branch which the user could specify, rather than just the master branch. 
+8. Our bot right now takes commands and reacts on it. It is basically a reactor bot. We would like it to be a responder bot where it moniters any activities on github and respond if some events like new dependencies added or something of that sort and the bot would tell the developer whether the dependency added could be updated to a newer version.
