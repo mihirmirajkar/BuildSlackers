@@ -12,6 +12,15 @@ Incompatibility issues can often arise from updating versions of different depen
 
 ##### Primary Features
 
+For our bot, we implemented 3 use cases: 
+1. Change which project the bot is monitoring
+2. List the names, the current verion, and any newer versions available for each dependency in a project
+3. Update a dependency to the latest version that passes any unit tests in the project
+
+Our bot accepts commands through Slack, like so:
+
+![Commands](Images/BotScreenshot1.png)
+![Commands, cont](Images/BotScreenshot2.png)
 The BuildSlacker bot is capable of handling multiple repositories in an Organizational GitHub where multiple teams work on different projects, each in its repository of its own.  
 
 In our bot, we were able to implement the ability to pull a project from a Github repository and check whether it had any dependencies with newer versions available.
@@ -48,3 +57,4 @@ interesting questions (such as if versions of two dependencies are incompatible 
 6. Our bot can only be run on Linux machines. We need to configure it to identify whether it is on a Windows or Linux machine, and then take the necessary actions for the type of machine it is on.  
 7. Our bot is unable to deal with branches. We would like our bot to checkout a specific branch which the user could specify, rather than just the master branch.  
 8. Our bot right now takes commands and reacts on it. It is basically a reactor bot. We would like it to be a responder bot where it moniters any activities on github and respond if some events like new dependencies added or something of that sort and the bot would tell the developer whether the dependency added could be updated to a newer version.
+9. Our bot also can only update to the latest version of a dependency, rather than allowing a user to specify which version of a dependency to update to.
