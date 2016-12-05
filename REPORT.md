@@ -5,6 +5,8 @@ Our [screencast](https://www.youtube.com/watch?v=DuXbmsDGaJw) talks about our bo
 
 A basic fundamental need of software systems which evolve over time is the idea of "designing for failure". The gold standard for software availability is the "5 9's", meaning that the system will be up 99.999% of the time. Most big projects will have dependencies on third-party software. Those third-party software pieces will be updated over time, providing gains in performance, security, or reliability, among other things. To ensure your software is as up to date as possible, you will occasionally need to update your software so that it is using the latest version of any software it is dependent on.
 
+According to one study, around 40% of java projects fail to compile because of dependency errors, whether that be having an incompatible version of a dependency, or because a dependency is missing. Dependencies are also updated constantly, and a developer might not have the time to stay up to date with the latest verions of those dependencies he is using in his project.
+
 Incompatibility issues can often arise from updating versions of different dependencies in a software project, which leads to needless downtime. When this occurs, it can take a long time for developers to dig through every dependency that has been updated, identify the specific one that caused the build to break, and determine what needs to be done to fix it. Buildslackers automates this process so that the developer is relieved from the duty of updating the dependencies in a fashion that does not break the built.
 
 
